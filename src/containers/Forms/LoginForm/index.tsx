@@ -87,7 +87,7 @@ export const LoginForm = () => {
         dispatch(
           setNotification({
             open: true,
-            title: `${error.message}`,
+            title: `${error.code}`,
             color: theme.palette.error.main,
           })
         );

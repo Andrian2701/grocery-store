@@ -7,8 +7,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { GoogleSignIn } from "../../containers";
+import { Notification } from "../../components";
 import deliveryBoy from "../../assets/delivery-boy.png";
-import googleIcon from "../../assets/google-icon.webp";
 import facebookIcon from "../../assets/facebook-icon.png";
 
 export const AuthPage = () => {
@@ -16,6 +17,7 @@ export const AuthPage = () => {
 
   return (
     <Box bgcolor="#e5f3fd" minHeight="100vh" display="flex">
+      <Notification />
       <Container
         sx={{
           display: "flex",
@@ -91,16 +93,7 @@ export const AuthPage = () => {
           </Divider>
         </Box>
         <Box display="flex" gap={1} m={2}>
-          <Box
-            component="img"
-            src={googleIcon}
-            alt="Login with Google"
-            height={55}
-            sx={{
-              height: 55,
-              cursor: "pointer",
-            }}
-          />
+          <GoogleSignIn />
           <Box
             component="img"
             src={facebookIcon}

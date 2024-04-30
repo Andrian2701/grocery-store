@@ -63,7 +63,7 @@ export const RegisterForm = () => {
           name: user.displayName,
           email: user.email,
         },
-        shopCart: arrayUnion({}),
+        shopCart: arrayUnion(),
       });
 
       dispatch(
@@ -85,7 +85,7 @@ export const RegisterForm = () => {
       dispatch(
         setNotification({
           open: true,
-          title: `${error.message}`,
+          title: `${error.code}`,
           color: theme.palette.error.main,
         })
       );
