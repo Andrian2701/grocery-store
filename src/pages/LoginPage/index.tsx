@@ -1,3 +1,9 @@
+import { LoginForm } from "../../containers";
+
 export const LoginPage = () => {
-  return <h1>Login page</h1>;
+  return (
+    <>
+      <LoginForm />
+    </>
+  );
 };

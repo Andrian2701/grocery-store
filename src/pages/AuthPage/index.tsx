@@ -1,5 +1,12 @@
-import { Box, Container, Divider, Typography, useTheme } from "@mui/material";
-import { MainButton } from "../../components/MainButton";
+import { Link } from "react-router-dom";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import deliveryBoy from "../../assets/delivery-boy.png";
 import googleIcon from "../../assets/google-icon.webp";
 import facebookIcon from "../../assets/facebook-icon.png";
@@ -39,26 +46,37 @@ export const AuthPage = () => {
             at Home
           </Typography>
         </Box>
-        <Box width="100%" display="flex" flexDirection="column" gap={2} m={3}>
-          <MainButton title="Login" pathname="login" />
-          <MainButton
-            title="Register"
-            pathname="register"
-            additionalStyles={{
+        <Box
+          width="100%"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          gap={1.5}
+          m={3}
+        >
+          <Button component={Link} to="/auth/login">
+            Login
+          </Button>
+          <Button
+            component={Link}
+            to="/auth/register"
+            sx={{
               backgroundColor: "#e5f3fd",
               color: "#33b864",
-              border: `1px solid ${theme.palette.secondary.main}`,
+              border: `1px solid ${theme.palette.primary.main}`,
               "&:hover": {
                 backgroundColor: "rgba(46, 171, 92, 0.1)",
               },
             }}
-          />
+          >
+            Register
+          </Button>
         </Box>
         <Box width="100%">
           <Divider
             sx={{
               fontSize: "0.8rem",
-              color: theme.palette.primary.main,
+              color: theme.palette.secondary.main,
               "&.MuiDivider-root": {
                 "&::before": {
                   borderTop: "thin solid #4b3a26",

@@ -3,10 +3,14 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#050505",
+      main: "#33b864",
     },
     secondary: {
-      main: "#33b864",
+      main: "#050505",
+      light: "#808588",
+    },
+    error: {
+      main: "#d32f2f",
     },
   },
   typography: {
@@ -21,6 +25,11 @@ export const theme = createTheme({
         fontSize: 30,
       },
     },
+    subtitle1: {
+      color: "#808588",
+      fontSize: 15,
+      textDecoration: "none",
+    },
   },
   breakpoints: {
     values: {
@@ -32,17 +41,74 @@ export const theme = createTheme({
     },
   },
   components: {
-    MuiButton: {
-      defaultProps: {
-        disableRipple: true,
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: {
         body: {
           padding: 0,
           margin: 0,
           boxSizing: "border-box",
+          backgroundColor: "#f9fafb",
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          height: 45,
+          width: 325,
+          backgroundColor: "#33b864",
+          color: "#ffffff",
+          textTransform: "none",
+          fontSize: 15,
+          fontWeight: 600,
+          borderRadius: "0.5rem",
+          "&:hover": {
+            backgroundColor: "#2eab5c",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontSize: 12.5,
+          borderRadius: 5,
+          height: 47,
+          width: "100%",
+          color: "#050505",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#808588",
+            borderWidth: 1,
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#808588",
+          },
+          "& input::placeholder": {
+            fontSize: 12.5,
+            color: "#808588",
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      defaultProps: {
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          color: "#050505",
+        },
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#ffffff",
+          color: "#050505",
+          boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
         },
       },
     },
