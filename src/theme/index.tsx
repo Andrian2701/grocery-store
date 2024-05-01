@@ -25,6 +25,11 @@ export const theme = createTheme({
         fontSize: 30,
       },
     },
+    h4: {
+      color: "#050505",
+      fontWeight: 500,
+      fontSize: 15,
+    },
     subtitle1: {
       color: "#808588",
       fontSize: 15,
@@ -109,6 +114,32 @@ export const theme = createTheme({
           backgroundColor: "#ffffff",
           color: "#050505",
           boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+        },
+      },
+    },
+    MuiMenuItem: {
+      defaultProps: {
+        disableTouchRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          minHeight: "20.25px",
+          boxShadow: "none",
+          padding: 0,
+          color: "#050505",
+          transitionDuration: "0.2s",
+          fontSize: 13.5,
+          "&:hover": {
+            color: "#33b864",
+            backgroundColor: "transparent",
+          },
         },
       },
     },

@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { arrayUnion, doc, getDoc, setDoc } from "firebase/firestore";
-import googleIcon from "../../assets/google-icon.webp";
+import googleIcon from "../../assets/icons/google-icon.webp";
 import { setNotification } from "../../features/Notification/NotificationSlice";
 import { auth, db, provider } from "../../utils/firebase";
 

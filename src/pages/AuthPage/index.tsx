@@ -10,7 +10,7 @@ import {
 import { GoogleSignIn } from "../../containers";
 import { Notification } from "../../components";
 import deliveryBoy from "../../assets/delivery-boy.png";
-import facebookIcon from "../../assets/facebook-icon.png";
+import facebookIcon from "../../assets/icons/facebook-icon.png";
 
 export const AuthPage = () => {
   const theme = useTheme();
