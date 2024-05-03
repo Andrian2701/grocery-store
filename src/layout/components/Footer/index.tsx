@@ -7,15 +7,15 @@ export const Footer = () => {
   const theme = useTheme();
 
   return (
-    <Box height="28rem" display="flex" flexDirection="column">
+    <Box height="100%" display="flex" flexDirection="column">
       <Box
         display="flex"
         flexDirection={{ xs: "column", sm: "row", md: "row" }}
         gap={{ xs: 4, sm: 4, md: 0 }}
         padding={{
-          xs: "30px 16px 16px 16px",
-          sm: "24px 24px 16px 24px",
-          md: "60px 60px 60px 60px",
+          xs: "16px 16px 16px 16px",
+          sm: "16px 24px 16px 24px",
+          md: "16px 60px 16px 60px",
         }}
       >
         <Box display="flex" flexDirection="column" flexGrow={1} gap={2}>

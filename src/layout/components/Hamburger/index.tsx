@@ -43,26 +43,38 @@ export const Hamburger = () => {
         anchor={"left"}
         open={hamburger["left"]}
         onClose={handleToggle("left", false)}
+        sx={{ position: "relative" }}
       >
         <Box
           width={{ xs: "100vw", sm: "25rem" }}
           height="100%"
           display="flex"
           flexDirection="column"
-          padding="16px"
-          gap={4}
         >
           <Box
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            position="fixed"
+            height={56}
+            width={{ xs: "100%", sm: 400 }}
+            padding={{ xs: "0 16px 0 16px", sm: "0 24px 0 24px" }}
           >
-            <Typography variant="h4">All Stores</Typography>
+            <Typography variant="h4">All</Typography>
             <IconButton onClick={handleToggle("left", false)}>
               <CloseIcon />
             </IconButton>
           </Box>
-          <Box display="flex" flexDirection="column" gap={4}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap={4}
+            marginTop={10}
+            padding={{
+              xs: "0 16px 16px 16px",
+              sm: "0 24px 16px 24px",
+            }}
+          >
             <Navbar navItems={navItems} />
           </Box>
         </Box>

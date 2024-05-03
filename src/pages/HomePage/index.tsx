@@ -1,100 +1,27 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import bannerImg from "../../assets/banner.jpeg";
 
 export const HomePage = () => {
   return (
-    <Typography marginTop={10}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae quos unde
-      dignissimos incidunt modi. Minus, error, fugiat libero fugit perferendis
-      cum nam repudiandae eum vitae nemo dolor dicta corrupti velit! Lorem ipsum
-      dolor sit amet consectetur, adipisicing elit. Eveniet ullam nam impedit
-      amet sint, voluptates aliquid fugiat vero excepturi blanditiis asperiores
-      fugit, omnis adipisci esse debitis magnam accusamus repudiandae illo!
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, quod?
-      Unde dicta officia, commodi voluptatibus cumque fugiat eligendi,
-      voluptatem nulla, maxime sed reiciendis natus dolor distinctio repellat
-      ducimus at illo! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Possimus explicabo minima, in eveniet, fugiat cupiditate nesciunt sunt ex
-      similique placeat accusamus incidunt vero quam porro inventore ratione
-      quidem qui dolorum? Lorem ipsum dolor, sit amet consectetur adipisicing
-      elit. Ipsa earum et, totam voluptatum quo deserunt alias est doloribus,
-      qui cum cumque. Alias neque itaque voluptatibus quas? Voluptatum in
-      nostrum maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Vitae quos unde dignissimos incidunt modi. Minus, error, fugiat libero
-      fugit perferendis cum nam repudiandae eum vitae nemo dolor dicta corrupti
-      velit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
-      ullam nam impedit amet sint, voluptates aliquid fugiat vero excepturi
-      blanditiis asperiores fugit, omnis adipisci esse debitis magnam accusamus
-      repudiandae illo! Lorem ipsum dolor sit, amet consectetur adipisicing
-      elit. Dolor, quod? Unde dicta officia, commodi voluptatibus cumque fugiat
-      eligendi, voluptatem nulla, maxime sed reiciendis natus dolor distinctio
-      repellat ducimus at illo! Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Possimus explicabo minima, in eveniet, fugiat cupiditate
-      nesciunt sunt ex similique placeat accusamus incidunt vero quam porro
-      inventore ratione quidem qui dolorum? Lorem ipsum dolor, sit amet
-      consectetur adipisicing elit. Ipsa earum et, totam voluptatum quo deserunt
-      alias est doloribus, qui cum cumque. Alias neque itaque voluptatibus quas?
-      Voluptatum in nostrum maxime? Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Vitae quos unde dignissimos incidunt modi. Minus, error,
-      fugiat libero fugit perferendis cum nam repudiandae eum vitae nemo dolor
-      dicta corrupti velit! Lorem ipsum dolor sit amet consectetur, adipisicing
-      elit. Eveniet ullam nam impedit amet sint, voluptates aliquid fugiat vero
-      excepturi blanditiis asperiores fugit, omnis adipisci esse debitis magnam
-      accusamus repudiandae illo! Lorem ipsum dolor sit, amet consectetur
-      adipisicing elit. Dolor, quod? Unde dicta officia, commodi voluptatibus
-      cumque fugiat eligendi, voluptatem nulla, maxime sed reiciendis natus
-      dolor distinctio repellat ducimus at illo! Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Possimus explicabo minima, in eveniet,
-      fugiat cupiditate nesciunt sunt ex similique placeat accusamus incidunt
-      vero quam porro inventore ratione quidem qui dolorum? Lorem ipsum dolor,
-      sit amet consectetur adipisicing elit. Ipsa earum et, totam voluptatum quo
-      deserunt alias est doloribus, qui cum cumque. Alias neque itaque
-      voluptatibus quas? Voluptatum in nostrum maxime? Lorem ipsum dolor sit
-      amet consectetur adipisicing elit. Vitae quos unde dignissimos incidunt
-      modi. Minus, error, fugiat libero fugit perferendis cum nam repudiandae
-      eum vitae nemo dolor dicta corrupti velit! Lorem ipsum dolor sit amet
-      consectetur, adipisicing elit. Eveniet ullam nam impedit amet sint,
-      voluptates aliquid fugiat vero excepturi blanditiis asperiores fugit,
-      omnis adipisci esse debitis magnam accusamus repudiandae illo! Lorem ipsum
-      dolor sit, amet consectetur adipisicing elit. Dolor, quod? Unde dicta
-      officia, commodi voluptatibus cumque fugiat eligendi, voluptatem nulla,
-      maxime sed reiciendis natus dolor distinctio repellat ducimus at illo!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-      explicabo minima, in eveniet, fugiat cupiditate nesciunt sunt ex similique
-      placeat accusamus incidunt vero quam porro inventore ratione quidem qui
-      dolorum? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
-      earum et, totam voluptatum quo deserunt alias est doloribus, qui cum
-      cumque. Alias neque itaque voluptatibus quas? Voluptatum in nostrum
-      maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-      quos unde dignissimos incidunt modi. Minus, error, fugiat libero fugit
-      perferendis cum nam repudiandae eum vitae nemo dolor dicta corrupti velit!
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet ullam
-      nam impedit amet sint, voluptates aliquid fugiat vero excepturi blanditiis
-      asperiores fugit, omnis adipisci esse debitis magnam accusamus repudiandae
-      illo! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor,
-      quod? Unde dicta officia, commodi voluptatibus cumque fugiat eligendi,
-      voluptatem nulla, maxime sed reiciendis natus dolor distinctio repellat
-      ducimus at illo! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Possimus explicabo minima, in eveniet, fugiat cupiditate nesciunt sunt ex
-      similique placeat accusamus incidunt vero quam porro inventore ratione
-      quidem qui dolorum? Lorem ipsum dolor, sit amet consectetur adipisicing
-      elit. Ipsa earum et, totam voluptatum quo deserunt alias est doloribus,
-      qui cum cumque. Alias neque itaque voluptatibus quas? Voluptatum in
-      nostrum maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Vitae quos unde dignissimos incidunt modi. Minus, error, fugiat libero
-      fugit perferendis cum nam repudiandae eum vitae nemo dolor dicta corrupti
-      velit! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet
-      ullam nam impedit amet sint, voluptates aliquid fugiat vero excepturi
-      blanditiis asperiores fugit, omnis adipisci esse debitis magnam accusamus
-      repudiandae illo! Lorem ipsum dolor sit, amet consectetur adipisicing
-      elit. Dolor, quod? Unde dicta officia, commodi voluptatibus cumque fugiat
-      eligendi, voluptatem nulla, maxime sed reiciendis natus dolor distinctio
-      repellat ducimus at illo! Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Possimus explicabo minima, in eveniet, fugiat cupiditate
-      nesciunt sunt ex similique placeat accusamus incidunt vero quam porro
-      inventore ratione quidem qui dolorum? Lorem ipsum dolor, sit amet
-      consectetur adipisicing elit. Ipsa earum et, totam voluptatum quo deserunt
-      alias est doloribus, qui cum cumque. Alias neque itaque voluptatibus quas?
-      Voluptatum in nostrum maxime?
-    </Typography>
+    <Box
+      display="flex"
+      justifyContent="center"
+      marginTop={10}
+      padding={{
+        xs: "0 16px 16px 16px",
+        sm: "0 24px 16px 24px",
+      }}
+    >
+      <Box width="100%" height={{ xs: "10rem", sm: "15rem", md: "20rem" }}>
+        <Box
+          component="img"
+          src={bannerImg}
+          alt="Fresh & Healthy Vegetables"
+          width="100%"
+          height="100%"
+          borderRadius="0.5rem"
+        />
+      </Box>
+    </Box>
   );
 };
