@@ -1,24 +1,24 @@
-import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { MenuItem } from "@mui/material";
 
 type NavbarProps = {
-  children?: ReactNode;
+  navItems: string[];
+  fontSize?: number;
 };
 
-export const Navbar = ({ children }: NavbarProps) => {
+export const Navbar = ({ navItems, fontSize }: NavbarProps) => {
   return (
     <>
-      <MenuItem component={Link} to="#">
-        Cart
-      </MenuItem>
-      <MenuItem component={Link} to="#">
-        Contact
-      </MenuItem>
-      <MenuItem component={Link} to="#">
-        Help
-      </MenuItem>
-      {children}
+      {navItems.map((item) => (
+        <MenuItem
+          key={item}
+          component={Link}
+          to="#"
+          sx={{ fontSize: fontSize }}
+        >
+          {item}
+        </MenuItem>
+      ))}
     </>
   );
 };

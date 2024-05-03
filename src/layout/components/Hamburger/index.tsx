@@ -1,16 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  Box,
-  Drawer,
-  IconButton,
-  MenuItem,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseIcon from "@mui/icons-material/Close";
 import { Navbar } from "..";
+import { navItems } from "../navItems";
 
 export const Hamburger = () => {
   const theme = useTheme();
@@ -18,7 +11,7 @@ export const Hamburger = () => {
     left: false,
   });
 
-  const toggleHamburger =
+  const handleToggle =
     (anchor: string, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -35,7 +28,7 @@ export const Hamburger = () => {
   return (
     <>
       <IconButton
-        onClick={toggleHamburger("left", true)}
+        onClick={handleToggle("left", true)}
         sx={{
           color: theme.palette.secondary.main,
           display: { xs: "block", sm: "block", md: "none" },
@@ -49,7 +42,7 @@ export const Hamburger = () => {
       <Drawer
         anchor={"left"}
         open={hamburger["left"]}
-        onClose={toggleHamburger("left", false)}
+        onClose={handleToggle("left", false)}
       >
         <Box
           width={{ xs: "100vw", sm: "25rem" }}
@@ -65,23 +58,12 @@ export const Hamburger = () => {
             alignItems="center"
           >
             <Typography variant="h4">All Stores</Typography>
-            <IconButton onClick={toggleHamburger("left", false)}>
+            <IconButton onClick={handleToggle("left", false)}>
               <CloseIcon />
             </IconButton>
           </Box>
           <Box display="flex" flexDirection="column" gap={4}>
-            <Navbar
-              children={
-                <>
-                  <MenuItem component={Link} to="#">
-                    Login
-                  </MenuItem>
-                  <MenuItem component={Link} to="#">
-                    Logout
-                  </MenuItem>
-                </>
-              }
-            />
+            <Navbar navItems={navItems} />
           </Box>
         </Box>
       </Drawer>

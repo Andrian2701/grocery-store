@@ -79,14 +79,6 @@ export const AuthPage = () => {
             sx={{
               fontSize: "0.8rem",
               color: theme.palette.secondary.main,
-              "&.MuiDivider-root": {
-                "&::before": {
-                  borderTop: "thin solid #4b3a26",
-                },
-                "&::after": {
-                  borderTop: "thin solid #4b3a26",
-                },
-              },
             }}
           >
             Or login with

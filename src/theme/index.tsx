@@ -135,7 +135,7 @@ export const theme = createTheme({
           padding: 0,
           color: "#050505",
           transitionDuration: "0.2s",
-          fontSize: 13.5,
+          fontSize: 15,
           "&:hover": {
             color: "#33b864",
             backgroundColor: "transparent",

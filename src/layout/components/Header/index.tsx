@@ -1,8 +1,8 @@
 import { useTheme } from "@mui/material";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
-import { Navbar } from "..";
-import { Hamburger } from "..";
+import { Navbar, Hamburger } from "..";
+import { navItems } from "../navItems";
 import avatar from "../../../assets/avatar.jpeg";
 
 export const Header = () => {
@@ -42,7 +42,7 @@ export const Header = () => {
             alignItems="center"
             gap={4}
           >
-            <Navbar />
+            <Navbar navItems={navItems.slice(4)} fontSize={13.5} />
           </Box>
           <Box
             display="flex"
