@@ -25,6 +25,16 @@ export const theme = createTheme({
         fontSize: 30,
       },
     },
+    h2: {
+      color: "#050505",
+      fontWeight: 600,
+      ["@media (max-width: 576px)"]: {
+        fontSize: 20,
+      },
+      ["@media screen and (min-width: 576px)"]: {
+        fontSize: 25,
+      },
+    },
     h4: {
       color: "#050505",
       fontWeight: 500,

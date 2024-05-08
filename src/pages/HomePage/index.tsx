@@ -1,11 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { Categories } from "../../containers";
 import bannerImg from "../../assets/banner.jpeg";
 
 export const HomePage = () => {
   return (
     <Box
       display="flex"
+      flexDirection="column"
       justifyContent="center"
+      gap="2rem"
       marginTop={10}
       padding={{
         xs: "0 16px 16px 16px",
@@ -22,6 +25,7 @@ export const HomePage = () => {
           borderRadius="0.5rem"
         />
       </Box>
+      <Categories />
     </Box>
   );
 };
