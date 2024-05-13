@@ -59,7 +59,7 @@ export const LoginForm = () => {
               open: false,
             })
           ),
-            navigate("/");
+            navigate("/vegetables");
         }, 2000);
       })
       .catch(() => {

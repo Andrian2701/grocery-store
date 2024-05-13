@@ -13,9 +13,9 @@ export const Footer = () => {
         flexDirection={{ xs: "column", sm: "row", md: "row" }}
         gap={{ xs: 4, sm: 4, md: 0 }}
         padding={{
-          xs: "16px 16px 16px 16px",
-          sm: "16px 24px 16px 24px",
-          md: "16px 60px 16px 60px",
+          xs: "0 16px 16px 16px",
+          sm: "0 24px 16px 24px",
+          md: "0 48px 16px 48px",
         }}
       >
         <Box display="flex" flexDirection="column" flexGrow={1} gap={2}>
@@ -76,8 +76,8 @@ export const Footer = () => {
                       component="img"
                       alt={item.alt}
                       src={item.icon}
-                      width="15%"
-                      height="45%"
+                      width="12%"
+                      height="40%"
                     />
                     <Typography variant="h4" fontSize={16}>
                       {item.title}
@@ -123,7 +123,7 @@ export const Footer = () => {
         padding={{
           xs: "16px 16px 16px 16px",
           sm: "16px 24px 16px 24px",
-          md: "16px 60px 16px 60px",
+          md: "16px 48px 16px 48px",
         }}
       >
         <Divider />

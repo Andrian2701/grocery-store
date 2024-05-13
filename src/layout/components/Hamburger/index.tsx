@@ -56,7 +56,7 @@ export const Hamburger = () => {
             justifyContent="space-between"
             alignItems="center"
             position="fixed"
-            height={56}
+            height={{ xs: 56, sm: 64 }}
             width={{ xs: "100%", sm: 400 }}
             padding={{ xs: "0 16px 0 16px", sm: "0 24px 0 24px" }}
           >

@@ -1,17 +1,5 @@
 .swiper-container {
   width: 100% !important;
-  height: 10rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  @media screen and (min-width: 576px) {
-    width: 576px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 768px;
-  }
 }
 
 .swiper-wrapper {
@@ -20,7 +8,6 @@
 }
 
 .swiper-slide {
-  height: 100%;
   width: 84px !important;
   display: flex;
   flex-direction: column;

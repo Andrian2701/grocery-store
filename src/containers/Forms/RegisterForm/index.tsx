@@ -79,7 +79,7 @@ export const RegisterForm = () => {
             open: false,
           })
         ),
-          navigate("/");
+          navigate("/vegetables");
       }, 2000);
     } catch (error: any) {
       dispatch(

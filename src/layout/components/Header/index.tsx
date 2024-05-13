@@ -16,6 +16,7 @@ export const Header = () => {
         bgcolor: "rgba(249, 250, 251, 0.8)",
         transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
         zIndex: "2",
+        height: { xs: 56, sm: 64 },
       }}
     >
       <Toolbar
@@ -23,6 +24,11 @@ export const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          padding: {
+            xs: "0 16px 0px 16px",
+            sm: "0 24px 0px 24px",
+            md: "0 48px 0px 48px",
+          },
         }}
       >
         <Hamburger />

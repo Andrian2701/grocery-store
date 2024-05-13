@@ -52,7 +52,7 @@ export const GoogleSignIn = () => {
             })
           );
           setTimeout(() => {
-            navigate("/");
+            navigate("/vegetables");
           }, 2000);
         } else {
           dispatch(
@@ -63,7 +63,7 @@ export const GoogleSignIn = () => {
             })
           );
           setTimeout(() => {
-            navigate("/");
+            navigate("/vegetables");
           }, 2000);
         }
       } catch (error: any) {
