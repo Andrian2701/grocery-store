@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Categories } from "../../containers";
+import { Categories } from "../../components";
 import { ExclusiveOffers } from "../../containers";
 import bannerImg from "../../assets/banner.jpeg";
 

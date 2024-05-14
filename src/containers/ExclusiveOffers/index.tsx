@@ -1,18 +1,27 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Box, Button, Typography, Skeleton, useTheme } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Box, Typography, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./index.css";
+import { ProductCard } from "../../components";
 import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
-import { Product } from "../../features/Products/ProductsSlice";
+import { Product } from "../../components/ProductCard/types";
 
 export const ExclusiveOffers = () => {
   const theme = useTheme();
   const { category } = useParams();
   const { data, isLoading } = useGetProductsQuery(category);
+
+  const memoizedProducts = useMemo(
+    () =>
+      Array.isArray(data?.data) &&
+      data.data.filter((product: Product) => product.productId < 7),
+
+    [data]
+  );
 
   return (
     <Box display="flex" flexDirection="column" gap="2rem">
@@ -21,7 +30,7 @@ export const ExclusiveOffers = () => {
         <Typography
           variant="subtitle1"
           component={Link}
-          to="#"
+          to={`/${category}/all`}
           sx={{ color: theme.palette.primary.main, cursor: "pointer" }}
         >
           See all
@@ -37,92 +46,20 @@ export const ExclusiveOffers = () => {
           className="swiper-container"
         >
           {!isLoading ? (
-            data.data.map((product: Product) => (
-              <SwiperSlide key={product.productId}>
-                <Box
-                  component="img"
-                  src={product.imgURL}
-                  alt="product"
-                  width={{ xs: 130, sm: 150 }}
-                  height={{ xs: 130, sm: 150 }}
+            memoizedProducts.map((product: Product) => (
+              <SwiperSlide>
+                <ProductCard
+                  key={product.productId}
+                  product={product}
+                  isLoading={isLoading}
                 />
-                <Box>
-                  <Typography
-                    variant="h2"
-                    fontSize="1.2rem !important"
-                    textAlign="center"
-                  >
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    fontSize="13.5px !important"
-                    textAlign="center"
-                  >
-                    {product.quantity}pcs, Pricetag
-                  </Typography>
-                </Box>
-                <Box
-                  width="100%"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Typography variant="h2" fontSize="1.2rem !important">
-                    ${product.price}
-                  </Typography>
-                  <Button
-                    sx={{
-                      minWidth: "1.8rem",
-                      maxWidth: "1.8rem",
-                      height: "1.8rem",
-                      borderRadius: "0.3rem",
-                    }}
-                  >
-                    <AddIcon sx={{ fontSize: "1.2rem" }} />
-                  </Button>
-                </Box>
               </SwiperSlide>
             ))
           ) : (
             <>
-              {Array.from({ length: 5 }).map((_, index) => (
-                <SwiperSlide key={index}>
-                  <Skeleton
-                    variant="rectangular"
-                    animation="pulse"
-                    sx={{
-                      width: "100%",
-                      height: { xs: 130, sm: 150 },
-                    }}
-                  />
-                  <Box width="100%">
-                    <Skeleton
-                      variant="text"
-                      animation="pulse"
-                      width="100%"
-                      height={23}
-                    />
-                    <Skeleton
-                      variant="text"
-                      animation="pulse"
-                      width="100%"
-                      height={23}
-                    />
-                  </Box>
-                  <Box
-                    width="100%"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    <Skeleton
-                      variant="text"
-                      animation="pulse"
-                      width={52}
-                      height={23}
-                    />
-                  </Box>
+              {Array.from({ length: 7 }).map((_, index) => (
+                <SwiperSlide>
+                  <ProductCard key={index} isLoading={isLoading} />
                 </SwiperSlide>
               ))}
             </>

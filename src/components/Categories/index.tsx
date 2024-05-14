@@ -18,7 +18,7 @@ export const Categories = () => {
         cssMode={true}
         mousewheel={true}
         keyboard={true}
-        spaceBetween={35}
+        spaceBetween={30}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className="swiper-container"
       >

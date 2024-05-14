@@ -1,14 +1,7 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../utils/firebase";
-
-export type Product = {
-  name: string;
-  imgURL: string;
-  price: number;
-  quantity: number;
-  productId: number;
-};
+import { Product } from "../../components/ProductCard/types";
 
 type Products = {
   data: Product[];

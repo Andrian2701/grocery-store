@@ -27,13 +27,6 @@ export const Notification = () => {
       sx={{ marginTop: { xs: "40px", sm: 0 } }}
     >
       <Alert
-        icon={
-          color === "#d32f2f" ? (
-            <CancelOutlinedIcon />
-          ) : (
-            <CheckCircleOutlineOutlinedIcon />
-          )
-        }
         variant="filled"
         sx={{
           borderBottom: `3px solid ${color}`,
@@ -41,6 +34,13 @@ export const Notification = () => {
             color: color,
           },
         }}
+        icon={
+          color === "#d32f2f" ? (
+            <CancelOutlinedIcon />
+          ) : (
+            <CheckCircleOutlineOutlinedIcon />
+          )
+        }
       >
         {title}
       </Alert>

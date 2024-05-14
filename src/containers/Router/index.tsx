@@ -1,5 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AuthPage, HomePage, LoginPage, RegisterPage } from "../../pages";
+import {
+  AllProductsPage,
+  AuthPage,
+  HomePage,
+  LoginPage,
+  RegisterPage,
+} from "../../pages";
 import { Layout } from "../../layout";
 
 export const Router = () => (
@@ -7,6 +13,7 @@ export const Router = () => (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/:category" element={<HomePage />} />
+        <Route path="/:category/all" element={<AllProductsPage />} />
       </Route>
       <Route path="auth" element={<AuthPage />} />
       <Route path="auth/login" element={<LoginPage />} />
