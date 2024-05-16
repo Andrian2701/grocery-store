@@ -4,16 +4,21 @@ import {
   AuthPage,
   HomePage,
   LoginPage,
+  ProductPage,
   RegisterPage,
 } from "../../pages";
 import { Layout } from "../../layout";
+import { ExclusiveOffers } from "../../containers";
 
 export const Router = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/:category" element={<HomePage />} />
+        <Route path="/" element={<HomePage />}>
+          <Route path="/:category" element={<ExclusiveOffers />} />
+        </Route>
         <Route path="/:category/all" element={<AllProductsPage />} />
+        <Route path="/product/:name" element={<ProductPage />} />
       </Route>
       <Route path="auth" element={<AuthPage />} />
       <Route path="auth/login" element={<LoginPage />} />

@@ -1,19 +1,14 @@
 .container-two .swiper-wrapper {
   display: flex;
   justify-content: flex-start;
+  height: 18rem;
 }
 
 .container-two .swiper-slide {
-  width: 11.5rem !important;
-  padding: 1rem 1rem 1rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  border-radius: 1rem;
+  width: 13.5rem !important;
+  height: 16rem;
 
   @media screen and (min-width: 768px) {
-    width: 12rem !important;
+    width: 14rem !important;
   }
 }

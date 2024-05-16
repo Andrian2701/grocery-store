@@ -23,7 +23,7 @@ export const Categories = () => {
         className="swiper-container"
       >
         {categories.map((item) => (
-          <SwiperSlide>
+          <SwiperSlide key={item.title}>
             <Box
               component={Link}
               to={`/${item.query}`}

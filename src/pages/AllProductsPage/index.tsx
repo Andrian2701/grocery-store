@@ -23,31 +23,11 @@ export const AllProductsPage = () => {
     >
       {!isLoading ? (
         data.data.map((product: Product) => (
-          <Box
-            key={product.productId}
-            width={{
-              xs: "216px !important",
-              md: "224px !important",
-            }}
-            height={{
-              xs: "269.46px !important",
-              md: "289.46px !important",
-            }}
-            padding="1rem 1rem 1rem 1rem"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="space-between"
-            borderRadius="1rem"
-            bgcolor="#ffffff"
-            sx={{ cursor: "pointer" }}
-          >
-            <ProductCard
-              key={product.productId}
-              product={product}
-              isLoading={isLoading}
-            />
-          </Box>
+          <ProductCard
+            key={product.name}
+            product={product}
+            isLoading={isLoading}
+          />
         ))
       ) : (
         <>

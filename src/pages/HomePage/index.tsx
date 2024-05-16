@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom";
 import { Categories } from "../../components";
-import { ExclusiveOffers } from "../../containers";
 import bannerImg from "../../assets/banner.jpeg";
 
 export const HomePage = () => {
@@ -28,7 +28,7 @@ export const HomePage = () => {
         />
       </Box>
       <Categories />
-      <ExclusiveOffers />
+      <Outlet />
     </Box>
   );
 };

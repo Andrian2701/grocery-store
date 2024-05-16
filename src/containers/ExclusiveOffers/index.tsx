@@ -47,19 +47,15 @@ export const ExclusiveOffers = () => {
         >
           {!isLoading ? (
             memoizedProducts.map((product: Product) => (
-              <SwiperSlide>
-                <ProductCard
-                  key={product.productId}
-                  product={product}
-                  isLoading={isLoading}
-                />
+              <SwiperSlide key={product.name}>
+                <ProductCard product={product} isLoading={isLoading} />
               </SwiperSlide>
             ))
           ) : (
             <>
               {Array.from({ length: 7 }).map((_, index) => (
-                <SwiperSlide>
-                  <ProductCard key={index} isLoading={isLoading} />
+                <SwiperSlide key={index}>
+                  <ProductCard isLoading={isLoading} />
                 </SwiperSlide>
               ))}
             </>
