@@ -56,12 +56,12 @@ export const AuthPage = () => {
           gap={1.5}
           m={3}
         >
-          <Button component={Link} to="/auth/login">
+          <Button component={Link} to="/login">
             Login
           </Button>
           <Button
             component={Link}
-            to="/auth/register"
+            to="/register"
             sx={{
               backgroundColor: "#e5f3fd",
               color: "#33b864",

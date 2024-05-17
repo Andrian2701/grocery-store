@@ -7,13 +7,18 @@ import "swiper/css/navigation";
 import "./index.css";
 import { categories } from "./categories";
 
-export const Categories = () => {
+type CategoriesProps = {
+  title: string;
+};
+
+export const Categories = ({ title }: CategoriesProps) => {
   const theme = useTheme();
   const { category } = useParams();
 
   return (
-    <Box display="flex" flexDirection="column" gap="2rem">
-      <Typography variant="h2">Top Categories</Typography>
+    <Box width="100%" display="flex" flexDirection="column" gap="2rem">
+      <Typography variant="h2">{title}</Typography>
+
       <Swiper
         cssMode={true}
         mousewheel={true}
@@ -29,13 +34,21 @@ export const Categories = () => {
               to={`/${item.query}`}
               width={{ xs: "5rem", sm: "6rem", md: "7rem" }}
               height={{ xs: "5rem", sm: "6rem", md: "7rem" }}
-              border={`2px solid ${theme.palette.primary.main}`}
+              border={
+                title === "Related Items"
+                  ? "none"
+                  : `2px solid ${theme.palette.primary.main}`
+              }
               borderRadius="0.5rem"
               display="flex"
               alignItems="center"
               justifyContent="center"
               bgcolor={
-                category === item.query ? "rgba(46, 171, 92, 0.1)" : "#f9fafb"
+                title === "Related Items"
+                  ? "rgba(46, 171, 92, 0.1)"
+                  : category === item.query
+                  ? "rgba(46, 171, 92, 0.1)"
+                  : "#f9fafb"
               }
               sx={{
                 transitionDuration: "0.2s",

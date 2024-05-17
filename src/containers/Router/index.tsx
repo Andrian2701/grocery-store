@@ -18,11 +18,11 @@ export const Router = () => (
           <Route path="/:category" element={<ExclusiveOffers />} />
         </Route>
         <Route path="/:category/all" element={<AllProductsPage />} />
-        <Route path="/product/:name" element={<ProductPage />} />
+        <Route path="/:category/:name" element={<ProductPage />} />
       </Route>
       <Route path="auth" element={<AuthPage />} />
-      <Route path="auth/login" element={<LoginPage />} />
-      <Route path="auth/register" element={<RegisterPage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
     </Routes>
   </BrowserRouter>
 );

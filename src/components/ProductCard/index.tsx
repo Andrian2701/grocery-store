@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Box, Button, Skeleton, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Product } from "./types";
@@ -9,11 +9,13 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
+  const { category } = useParams();
+
   return (
     <>
       <Box
         component={Link}
-        to={`/product/${product?.name}`}
+        to={`/${category}/${product?.name}`}
         sx={{
           textDecoration: "none",
           height: "18rem",

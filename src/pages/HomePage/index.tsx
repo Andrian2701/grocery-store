@@ -27,7 +27,7 @@ export const HomePage = () => {
           borderRadius="0.5rem"
         />
       </Box>
-      <Categories />
+      <Categories title="Top Categories" />
       <Outlet />
     </Box>
   );
