@@ -32,27 +32,7 @@ export const AllProductsPage = () => {
       ) : (
         <>
           {Array.from({ length: 10 }).map((_, index) => (
-            <Box
-              key={index}
-              width={{
-                xs: "216px !important",
-                md: "224px !important",
-              }}
-              height={{
-                xs: "269.46px !important",
-                md: "289.46px !important",
-              }}
-              padding="1rem 1rem 1rem 1rem"
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="space-between"
-              borderRadius="1rem"
-              bgcolor="#ffffff"
-              sx={{ cursor: "pointer" }}
-            >
-              <ProductCard key={index} isLoading={isLoading} />
-            </Box>
+            <ProductCard key={index} isLoading={isLoading} />
           ))}
         </>
       )}

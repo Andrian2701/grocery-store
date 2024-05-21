@@ -18,7 +18,7 @@ export const ExclusiveOffers = () => {
   const memoizedProducts = useMemo(
     () =>
       Array.isArray(data?.data) &&
-      data.data.filter((product: Product) => product.productId < 7),
+      data.data.filter((product: Product) => product.productId < 8),
 
     [data]
   );

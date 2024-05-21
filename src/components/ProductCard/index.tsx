@@ -43,7 +43,7 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
               <Box
                 component="img"
                 src={product?.imgURL}
-                alt="product"
+                alt={product?.name}
                 width={{ xs: 130, sm: 150 }}
                 height={{ xs: 130, sm: 150 }}
               />

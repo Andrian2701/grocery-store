@@ -17,6 +17,9 @@ export const Header = () => {
         transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
         zIndex: "2",
         height: { xs: 56, sm: 64 },
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
       }}
     >
       <Toolbar

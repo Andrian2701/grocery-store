@@ -18,7 +18,6 @@ export const Categories = ({ title }: CategoriesProps) => {
   return (
     <Box width="100%" display="flex" flexDirection="column" gap="2rem">
       <Typography variant="h2">{title}</Typography>
-
       <Swiper
         cssMode={true}
         mousewheel={true}
@@ -31,7 +30,11 @@ export const Categories = ({ title }: CategoriesProps) => {
           <SwiperSlide key={item.title}>
             <Box
               component={Link}
-              to={`/${item.query}`}
+              to={
+                title === "Top Categories"
+                  ? `/${item.query}`
+                  : `/${item.query}/all`
+              }
               width={{ xs: "5rem", sm: "6rem", md: "7rem" }}
               height={{ xs: "5rem", sm: "6rem", md: "7rem" }}
               border={
