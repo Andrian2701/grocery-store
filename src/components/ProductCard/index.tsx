@@ -1,5 +1,5 @@
-import { Link, useParams } from "react-router-dom";
-import { Box, Button, Skeleton, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { Box, Button, Skeleton, Typography, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Product } from "./types";
 
@@ -9,13 +9,13 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
-  const { category } = useParams();
+  const theme = useTheme();
 
   return (
     <>
       <Box
         component={Link}
-        to={`/${category}/${product?.name}`}
+        to={`/${product?.category}/${product?.name}`}
         sx={{
           textDecoration: "none",
           height: "18rem",
@@ -52,6 +52,12 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
                   variant="h2"
                   fontSize="1.2rem !important"
                   textAlign="center"
+                  sx={{
+                    transitionDuration: "0.2s",
+                    "&:hover": {
+                      color: theme.palette.primary.main,
+                    },
+                  }}
                 >
                   {product?.name}
                 </Typography>

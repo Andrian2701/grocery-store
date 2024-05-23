@@ -1,7 +1,10 @@
 export type Product = {
   name: string;
+  about: string;
+  category: string;
   imgURL: string;
-  price: number;
   quantity: number;
+  price: number;
+  calories: number;
   productId: number;
 };

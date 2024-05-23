@@ -40,8 +40,8 @@ export const ProductPage = () => {
               component="img"
               src={selectedProduct.imgURL}
               alt={selectedProduct.name}
-              width="70%"
-              height="70%"
+              width={{ xs: "15rem", sm: "18rem", md: "20rem" }}
+              height={{ xs: "15rem", sm: "18rem", md: "20rem" }}
             />
           </Box>
 

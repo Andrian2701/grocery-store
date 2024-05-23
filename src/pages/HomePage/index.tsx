@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Backdrop, Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { Categories, SearchItem } from "../../components";
+import { Categories } from "../../components";
+import { SearchItems } from "../../containers";
 import bannerImg from "../../assets/banner.jpeg";
 
 export const HomePage = () => {
@@ -34,7 +35,7 @@ export const HomePage = () => {
           justifyContent="center"
           gap="2rem"
         >
-          <SearchItem
+          <SearchItems
             openBackdrop={openBackdrop}
             setOpenBackDrop={setOpenBackdrop}
           />
