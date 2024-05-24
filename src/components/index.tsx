@@ -4,3 +4,4 @@ export { ProductCard } from "./ProductCard";
 export { Categories } from "./Categories";
 export { QuantitySelector } from "./QuantitySelector";
 export { SearchResult } from "./SearchResult";
+export { ProfileMenu } from "./ProfileMenu";

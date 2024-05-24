@@ -203,7 +203,7 @@ export const LoginForm = () => {
             <Typography variant="subtitle1">
               Don't have an account?{" "}
               <Link
-                to="/auth/register"
+                to="/register"
                 style={{
                   color: theme.palette.primary.main,
                   textDecoration: "none",

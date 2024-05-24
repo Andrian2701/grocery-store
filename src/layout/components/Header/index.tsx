@@ -2,8 +2,8 @@ import { useTheme } from "@mui/material";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { Navbar, Hamburger } from "..";
+import { ProfileMenu } from "../../../components";
 import { navItems } from "../navItems";
-import avatar from "../../../assets/avatar.jpeg";
 
 export const Header = () => {
   const theme = useTheme();
@@ -53,23 +53,7 @@ export const Header = () => {
           >
             <Navbar navItems={navItems.slice(4)} fontSize={13.5} />
           </Box>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            bgcolor="#e1e6f0"
-            borderRadius={2}
-            width={35}
-            height={35}
-          >
-            <Box
-              component="img"
-              src={avatar}
-              alt="avatar"
-              width="100%"
-              height="100%"
-            />
-          </Box>
+          <ProfileMenu />
         </Box>
       </Toolbar>
     </AppBar>

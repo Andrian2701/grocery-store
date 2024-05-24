@@ -200,7 +200,7 @@ export const RegisterForm = () => {
             <Typography variant="subtitle1">
               Already have an account?{" "}
               <Link
-                to="/auth/login"
+                to="/login"
                 style={{
                   color: theme.palette.primary.main,
                   textDecoration: "none",
