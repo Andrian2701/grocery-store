@@ -15,8 +15,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { arrayUnion, doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../../../utils/firebase";
+import { auth } from "../../../utils/firebase";
 import { FormData } from "../types";
 import { setNotification } from "../../../features/Notification/NotificationSlice";
 import { Notification, FormError } from "../../../components";
@@ -43,28 +42,16 @@ export const RegisterForm = () => {
 
   const handleFormSubmit = async (formData: FormData) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
-
-      const user = userCredential.user;
-      const usersRef = doc(db, "users", user.uid);
-
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
           displayName: formData.name,
         });
       }
-      await setDoc(usersRef, {
-        user: {
-          uid: user.uid,
-          name: user.displayName,
-          email: user.email,
-        },
-        shopCart: arrayUnion(),
-      });
 
       dispatch(
         setNotification({
@@ -95,7 +82,7 @@ export const RegisterForm = () => {
   return (
     <>
       <Link to="/auth">
-        <IconButton sx={{ position: "absolute", left: 10, top: 10 }}>
+        <IconButton sx={{ position: "absolute", right: 10, top: 10 }}>
           <CloseIcon />
         </IconButton>
       </Link>

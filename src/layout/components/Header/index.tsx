@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { Navbar, Hamburger } from "..";
-import { ProfileMenu } from "../../../components";
+import { AccountMenu } from "../../../components";
 import { navItems } from "../navItems";
 
 export const Header = () => {
@@ -53,7 +53,7 @@ export const Header = () => {
           >
             <Navbar navItems={navItems.slice(4)} fontSize={13.5} />
           </Box>
-          <ProfileMenu />
+          <AccountMenu />
         </Box>
       </Toolbar>
     </AppBar>

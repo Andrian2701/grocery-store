@@ -7,10 +7,9 @@ import {
   signInWithRedirect,
   updateProfile,
 } from "firebase/auth";
-import { arrayUnion, doc, getDoc, setDoc } from "firebase/firestore";
 import googleIcon from "../../assets/icons/google-icon.webp";
 import { setNotification } from "../../features/Notification/NotificationSlice";
-import { auth, db, provider } from "../../utils/firebase";
+import { auth, provider } from "../../utils/firebase";
 
 export const GoogleSignIn = () => {
   const navigate = useNavigate();
@@ -26,46 +25,23 @@ export const GoogleSignIn = () => {
         const user = res?.user;
         if (!user) return;
 
-        const usersRef = doc(db, "users", user.uid);
-        const userData = await getDoc(usersRef);
-
-        if (!userData.exists()) {
-          if (auth.currentUser) {
-            await updateProfile(auth.currentUser, {
-              displayName: user.displayName,
-            });
-          }
-          await setDoc(usersRef, {
-            user: {
-              uid: user.uid,
-              name: user.displayName,
-              email: user.email,
-            },
-            shopCart: arrayUnion(),
+        if (!auth.currentUser) {
+          await updateProfile(auth.currentUser, {
+            displayName: user.displayName,
+            photoURL: user.photoURL,
           });
-
-          dispatch(
-            setNotification({
-              open: true,
-              title: "Successful authentication",
-              color: theme.palette.primary.main,
-            })
-          );
-          setTimeout(() => {
-            navigate("/vegetables");
-          }, 2000);
-        } else {
-          dispatch(
-            setNotification({
-              open: true,
-              title: "Successful authentication",
-              color: theme.palette.primary.main,
-            })
-          );
-          setTimeout(() => {
-            navigate("/vegetables");
-          }, 2000);
         }
+
+        dispatch(
+          setNotification({
+            open: true,
+            title: "Successful authentication",
+            color: theme.palette.primary.main,
+          })
+        );
+        setTimeout(() => {
+          navigate("/vegetables");
+        }, 2000);
       } catch (error: any) {
         dispatch(
           setNotification({

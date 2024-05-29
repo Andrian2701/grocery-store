@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
+import { Categories, PageLoader, QuantitySelector } from "../../components";
 import { Product } from "../../components/ProductCard/types";
-import { Categories, QuantitySelector } from "../../components";
 
 export const ProductPage = () => {
   const { category, name } = useParams();
@@ -89,25 +89,7 @@ export const ProductPage = () => {
           </Box>
         </Box>
       ) : (
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          bgcolor="#ffffff"
-          zIndex={1000}
-          position="fixed"
-          top={0}
-          left={0}
-          width="100vw"
-          height="100vh"
-          padding={{
-            xs: "0 16px 48px 16px",
-            sm: "0 24px 48px 24px",
-            md: "0 48px 48px 48px",
-          }}
-        >
-          <CircularProgress />
-        </Box>
+        <PageLoader />
       )}
     </>
   );

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
+  AccountPage,
   AllProductsPage,
   AuthPage,
   HomePage,
@@ -19,6 +20,7 @@ export const Router = () => (
         </Route>
         <Route path="/:category/all" element={<AllProductsPage />} />
         <Route path="/:category/:name" element={<ProductPage />} />
+        <Route path="my-account" element={<AccountPage />} />
       </Route>
       <Route path="auth" element={<AuthPage />} />
       <Route path="login" element={<LoginPage />} />

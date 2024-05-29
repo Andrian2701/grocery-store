@@ -6,7 +6,7 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import avatar from "../../assets/avatar.jpeg";
 
-export const ProfileMenu = () => {
+export const AccountMenu = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState();
@@ -83,14 +83,19 @@ export const ProfileMenu = () => {
               flexDirection: "column",
               gap: "2rem",
               padding: {
-                xs: "10px 16px 10px 16px",
-                sm: "10px 24px 10px 24px",
+                xs: "18px 16px 18px 16px",
+                sm: "22px 20px 22px 20px",
               },
             },
           },
         }}
       >
-        <MenuItem sx={{ backgroundColor: "#ffffff !important" }}>
+        <MenuItem
+          component={Link}
+          to="/my-account"
+          sx={{ backgroundColor: "#ffffff !important" }}
+          onClick={handleCloseMenu}
+        >
           My account
         </MenuItem>
         <MenuItem>Settings</MenuItem>

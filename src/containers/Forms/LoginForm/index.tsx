@@ -97,7 +97,7 @@ export const LoginForm = () => {
   return (
     <>
       <Link to="/auth">
-        <IconButton sx={{ position: "absolute", left: 10, top: 10 }}>
+        <IconButton sx={{ position: "absolute", right: 10, top: 10 }}>
           <CloseIcon />
         </IconButton>
       </Link>
