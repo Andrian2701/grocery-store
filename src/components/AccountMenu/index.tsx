@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Box, Menu, MenuItem, useTheme } from "@mui/material";
+import { LogOut } from "../LogOut";
 import PersonIcon from "@mui/icons-material/Person";
-import { signOut, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import avatar from "../../assets/avatar.jpeg";
+import { ModalWindow } from "../ModalWindow";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
 
 export const AccountMenu = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
+
+  const handleOpenModal = () => dispatch(openModal(<LogOut />));
 
   useEffect(() => {
     const unsub = onAuthStateChanged(
@@ -92,7 +98,7 @@ export const AccountMenu = () => {
       >
         <MenuItem
           component={Link}
-          to="/my-account"
+          to="/account"
           sx={{ backgroundColor: "#ffffff !important" }}
           onClick={handleCloseMenu}
         >
@@ -100,11 +106,15 @@ export const AccountMenu = () => {
         </MenuItem>
         <MenuItem>Settings</MenuItem>
         <MenuItem
-          sx={{ color: theme.palette.primary.main }}
-          onClick={() => signOut(auth).then(() => navigate("/login"))}
+          onClick={() => {
+            handleOpenModal();
+            handleCloseMenu();
+          }}
+          color={theme.palette.primary.main}
         >
           Logout
         </MenuItem>
+        <ModalWindow />
       </Menu>
     </>
   );

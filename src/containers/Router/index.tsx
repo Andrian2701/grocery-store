@@ -20,7 +20,7 @@ export const Router = () => (
         </Route>
         <Route path="/:category/all" element={<AllProductsPage />} />
         <Route path="/:category/:name" element={<ProductPage />} />
-        <Route path="my-account" element={<AccountPage />} />
+        <Route path="account" element={<AccountPage />} />
       </Route>
       <Route path="auth" element={<AuthPage />} />
       <Route path="login" element={<LoginPage />} />

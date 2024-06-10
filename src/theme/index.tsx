@@ -155,5 +155,34 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          fontSize: 12.5,
+          borderRadius: 5,
+          height: 47,
+          width: "100%",
+          color: "#050505",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#808588",
+            borderWidth: 1,
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#808588",
+          },
+          "& input::placeholder": {
+            fontSize: 12.5,
+            color: "#808588",
+          },
+          "& .MuiInputLabel-outlined": {
+            fontSize: 12.5,
+            "&.Mui-focused": {
+              color: "#808588",
+              fontSize: 12.5,
+            },
+          },
+        },
+      },
+    },
   },
 });

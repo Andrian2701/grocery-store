@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Box, Button, Typography, styled, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { Product } from "../ProductCard/types";
+import { Product } from "../../components/ProductCard/types";
 import notFound from "../../assets/not-found.png";
 
 type SearchResultProps = {

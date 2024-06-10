@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Box, MenuItem, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { onAuthStateChanged } from "firebase/auth";
-import { PageLoader, AccountCard } from "../../components";
+import { PageLoader, AccountCard, AddressCard } from "../../components";
 import { User } from "../../components/AccountCard/types";
 import { auth } from "../../utils/firebase";
+import { useGetAddressQuery } from "../../features/Address/AddressSlice";
 
 export const AccountPage = () => {
   const theme = useTheme();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const { data, isLoading } = useGetAddressQuery(currentUser?.uid);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(
@@ -16,11 +18,11 @@ export const AccountPage = () => {
     );
 
     return () => unsub();
-  }, [auth]);
+  }, []);
 
   return (
     <>
-      {currentUser ? (
+      {currentUser && !isLoading ? (
         <Box
           display="flex"
           flexDirection="column"
@@ -32,25 +34,8 @@ export const AccountPage = () => {
             md: "0 48px 48px 48px",
           }}
         >
-          <AccountCard />
-          <Box display="flex" flexDirection="column" gap="2rem">
-            <Typography variant="h2">Address</Typography>
-            <Box display="flex" gap="2rem">
-              <Box>
-                <Typography variant="subtitle1" marginTop="0.5rem">
-                  Osvytska 19,
-                  <br />
-                  Lviv
-                </Typography>
-                <MenuItem
-                  sx={{ color: theme.palette.primary.main, marginTop: "2rem" }}
-                >
-                  Change Delivery Address
-                </MenuItem>
-              </Box>
-            </Box>
-          </Box>
-
+          <AccountCard currentUser={currentUser} />
+          <AddressCard address={data?.address} />
           <Box display="flex" flexDirection="column" gap="2rem">
             <Typography variant="h2">Order Translations</Typography>
             <Box display="flex" gap="2rem">

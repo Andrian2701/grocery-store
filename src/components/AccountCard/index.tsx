@@ -1,10 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { Box, MenuItem, Typography, useTheme } from "@mui/material";
 import { EditAccountForm } from "../../containers";
-import { auth } from "../../utils/firebase";
+import { ModalWindow } from "../../components";
+import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
+import { User } from "./types";
 import avatar from "../../assets/avatar.jpeg";
 
-export const AccountCard = () => {
-  const user = auth.currentUser;
+type AccountProps = {
+  currentUser: User;
+};
+
+export const AccountCard = ({ currentUser }: AccountProps) => {
+  const dispatch = useDispatch();
+  const theme = useTheme();
+
+  const handleOpenModal = () => dispatch(openModal(<EditAccountForm />));
 
   const handleFormatName = (fullName: string) => {
     const parts = fullName.split(" ");
@@ -43,12 +53,21 @@ export const AccountCard = () => {
         </Box>
         <Box>
           <Typography variant="h4" fontSize={18}>
-            {handleFormatName(user?.displayName ?? "")}
+            {handleFormatName(currentUser?.displayName ?? "")}
           </Typography>
           <Typography variant="subtitle1" marginTop="0.5rem">
-            {user?.email}
+            {currentUser?.email}
           </Typography>
-          <EditAccountForm />
+          <MenuItem
+            onClick={handleOpenModal}
+            sx={{
+              color: theme.palette.primary.main,
+              marginTop: "2rem",
+            }}
+          >
+            Set Delivery Address
+          </MenuItem>
+          <ModalWindow />
         </Box>
       </Box>
     </Box>

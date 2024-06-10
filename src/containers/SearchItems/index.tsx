@@ -1,18 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
-import CloseIcon from "@mui/icons-material/Close";
-import {
-  Box,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  useTheme,
-} from "@mui/material";
+import { Box, InputAdornment, OutlinedInput, useTheme } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../utils/firebase";
 import { Product } from "../../components/ProductCard/types";
-import { SearchResult } from "../../components";
+import { SearchResult } from "./SearchResults";
 
 type SearchItemsProps = {
   openBackdrop: boolean;
@@ -84,21 +77,6 @@ export const SearchItems = ({
               }}
             >
               <FiSearch />
-            </InputAdornment>
-          }
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                edge="end"
-                onClick={() => setSearchQ("")}
-                sx={{
-                  color: theme.palette.secondary.light,
-                  cursor: "pointer",
-                  fontSize: "0.1rem",
-                }}
-              >
-                {searchQ !== "" && <CloseIcon />}
-              </IconButton>
             </InputAdornment>
           }
           sx={{
