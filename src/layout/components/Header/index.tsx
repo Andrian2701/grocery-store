@@ -1,12 +1,10 @@
-import { useTheme } from "@mui/material";
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
-import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
+import { AppBar, Box, Toolbar } from "@mui/material";
 import { Navbar, Hamburger, AccountMenu } from "..";
 import { navItems } from "../navItems";
+import Logo from "../../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const theme = useTheme();
-
   return (
     <AppBar
       sx={{
@@ -33,8 +31,33 @@ export const Header = () => {
           },
         }}
       >
-        <Hamburger />
         <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap={1}
+          height={{ xs: "2.5rem", sm: "2.5rem", md: "3rem" }}
+        >
+          <Hamburger />
+          <Box
+            width="6.5rem"
+            height="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            component={Link}
+            to="/"
+          >
+            <Box
+              src={Logo}
+              component="img"
+              alt="logo"
+              width="100%"
+              height="100%"
+            />
+          </Box>
+        </Box>
+        {/* <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -42,7 +65,7 @@ export const Header = () => {
         >
           <FmdGoodRoundedIcon sx={{ color: theme.palette.primary.main }} />
           <Typography variant="h4">Kyiv</Typography>
-        </Box>
+        </Box> */}
         <Box display="flex" justifyContent="center" alignItems="center" gap={4}>
           <Box
             display={{ xs: "none", sm: "none", md: "flex" }}
