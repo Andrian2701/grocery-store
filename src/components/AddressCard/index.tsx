@@ -1,5 +1,4 @@
 import { Box, MenuItem, Typography, useTheme } from "@mui/material";
-import { SetAddress } from "./SetAddress";
 import { ModalWindow } from "../ModalWindow";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
@@ -7,8 +6,6 @@ import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
 export const AddressCard = ({ address }: { address: string }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-
-  const handleOpenModal = () => dispatch(openModal(<SetAddress />));
 
   return (
     <Box display="flex" flexDirection="column" gap="2rem">
@@ -19,7 +16,7 @@ export const AddressCard = ({ address }: { address: string }) => {
             {address ? address : "Address isn't provided"}
           </Typography>
           <MenuItem
-            onClick={handleOpenModal}
+            onClick={() => dispatch(openModal("SetAddress"))}
             sx={{
               color: theme.palette.primary.main,
               marginTop: "2rem",

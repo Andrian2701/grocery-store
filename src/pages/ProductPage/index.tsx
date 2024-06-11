@@ -2,8 +2,9 @@ import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
-import { Categories, PageLoader, QuantitySelector } from "../../components";
+import { Categories, PageLoader } from "../../components";
 import { Product } from "../../components/ProductCard/types";
+import { QuantitySelector } from "../../containers";
 
 export const ProductPage = () => {
   const { category, name } = useParams();

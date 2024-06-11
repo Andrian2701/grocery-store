@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { Box, MenuItem, Typography, useTheme } from "@mui/material";
-import { EditAccountForm } from "../../containers";
 import { ModalWindow } from "../../components";
 import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
 import { User } from "./types";
@@ -13,8 +12,6 @@ type AccountProps = {
 export const AccountCard = ({ currentUser }: AccountProps) => {
   const dispatch = useDispatch();
   const theme = useTheme();
-
-  const handleOpenModal = () => dispatch(openModal(<EditAccountForm />));
 
   const handleFormatName = (fullName: string) => {
     const parts = fullName.split(" ");
@@ -59,13 +56,13 @@ export const AccountCard = ({ currentUser }: AccountProps) => {
             {currentUser?.email}
           </Typography>
           <MenuItem
-            onClick={handleOpenModal}
+            onClick={() => dispatch(openModal("EditAccount"))}
             sx={{
               color: theme.palette.primary.main,
               marginTop: "2rem",
             }}
           >
-            Set Delivery Address
+            Change Account Data
           </MenuItem>
           <ModalWindow />
         </Box>

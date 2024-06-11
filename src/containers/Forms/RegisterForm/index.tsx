@@ -18,7 +18,8 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebase";
 import { FormData } from "../types";
 import { setNotification } from "../../../features/Notification/NotificationSlice";
-import { Notification, FormError } from "../../../components";
+import { Notification } from "../../../components";
+import { FormError } from "../FormError";
 
 export const RegisterForm = () => {
   const theme = useTheme();

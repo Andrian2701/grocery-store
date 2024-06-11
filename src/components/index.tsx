@@ -1,9 +1,6 @@
-export { FormError } from "./FormError";
 export { Notification } from "./Notification";
 export { ProductCard } from "./ProductCard";
 export { Categories } from "./Categories";
-export { QuantitySelector } from "./QuantitySelector";
-export { AccountMenu } from "./AccountMenu";
 export { AccountCard } from "./AccountCard";
 export { PageLoader } from "./PageLoader";
 export { LogOut } from "./LogOut";

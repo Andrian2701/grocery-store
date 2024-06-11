@@ -1,8 +1,7 @@
 import { useTheme } from "@mui/material";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
-import { Navbar, Hamburger } from "..";
-import { AccountMenu } from "../../../components";
+import { Navbar, Hamburger, AccountMenu } from "..";
 import { navItems } from "../navItems";
 
 export const Header = () => {
@@ -28,9 +27,9 @@ export const Header = () => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: {
-            xs: "0 16px 0px 16px",
-            sm: "0 24px 0px 24px",
-            md: "0 48px 0px 48px",
+            xs: "0 16px",
+            sm: "0 24px",
+            md: "0 48px",
           },
         }}
       >

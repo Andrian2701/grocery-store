@@ -23,8 +23,6 @@ export const SetAddress = () => {
       apiKey: API_KEY,
     });
 
-  const handleCloseModal = () => dispatch(closeModal());
-
   return (
     <Box
       sx={{
@@ -48,7 +46,7 @@ export const SetAddress = () => {
     >
       <IconButton
         onClick={() => {
-          handleCloseModal();
+          dispatch(closeModal());
           setSearchQ("");
         }}
         sx={{ position: "absolute", right: 10, top: 10 }}
@@ -104,7 +102,7 @@ export const SetAddress = () => {
               data={placePredictions}
               isLoading={isPlacePredictionsLoading}
               setSearchQ={setSearchQ}
-              handleCloseModal={handleCloseModal}
+              handleCloseModal={() => dispatch(closeModal())}
             />
           )}
         </Box>

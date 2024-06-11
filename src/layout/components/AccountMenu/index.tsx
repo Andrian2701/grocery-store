@@ -1,23 +1,21 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Box, Menu, MenuItem, useTheme } from "@mui/material";
-import { LogOut } from "../LogOut";
 import PersonIcon from "@mui/icons-material/Person";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import avatar from "../../assets/avatar.jpeg";
-import { ModalWindow } from "../ModalWindow";
-import { useDispatch } from "react-redux";
-import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
+import { ModalWindow } from "../../../components";
+import { openModal } from "../../../features/ModalWindow/ModalWindowSlice";
+import { auth } from "../../../utils/firebase";
+import avatar from "../../../assets/avatar.jpeg";
+import { User } from "../../../components/AccountCard/types";
 
 export const AccountMenu = () => {
   const theme = useTheme();
-  const [currentUser, setCurrentUser] = useState();
+  const dispatch = useDispatch();
+  const [currentUser, setCurrentUser] = useState<User | null>();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const dispatch = useDispatch();
-
-  const handleOpenModal = () => dispatch(openModal(<LogOut />));
 
   useEffect(() => {
     const unsub = onAuthStateChanged(
@@ -26,7 +24,7 @@ export const AccountMenu = () => {
     );
 
     return () => unsub();
-  }, [auth]);
+  }, []);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLImageElement>) =>
     setAnchorEl(event.currentTarget);
@@ -106,10 +104,7 @@ export const AccountMenu = () => {
         </MenuItem>
         <MenuItem>Settings</MenuItem>
         <MenuItem
-          onClick={() => {
-            handleOpenModal();
-            handleCloseMenu();
-          }}
+          onClick={() => dispatch(openModal("Logout"))}
           color={theme.palette.primary.main}
         >
           Logout

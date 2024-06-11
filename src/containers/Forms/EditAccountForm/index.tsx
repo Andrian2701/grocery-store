@@ -10,7 +10,7 @@ import {
   IconButton,
   TextField,
 } from "@mui/material";
-import { FormError } from "../../../components";
+import { FormError } from "../FormError";
 import { auth } from "../../../utils/firebase";
 import { closeModal } from "../../../features/ModalWindow/ModalWindowSlice";
 
@@ -30,7 +30,7 @@ export const EditAccountForm = () => {
     },
   });
 
-  const handleCloseModal = () => dispatch(closeModal());
+  console.log("account", "render");
 
   const handleFormSubmit = async (formData: any) => {
     if (auth.currentUser) {
@@ -39,7 +39,7 @@ export const EditAccountForm = () => {
       });
       updateEmail(auth.currentUser, formData.email);
 
-      handleCloseModal();
+      dispatch(closeModal());
     }
   };
 
@@ -62,7 +62,7 @@ export const EditAccountForm = () => {
       }}
     >
       <IconButton
-        onClick={handleCloseModal}
+        onClick={() => dispatch(closeModal())}
         sx={{ position: "absolute", right: 10, top: 10 }}
       >
         <CloseIcon />
