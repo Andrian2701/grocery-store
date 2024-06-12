@@ -2,14 +2,19 @@ import { useState } from "react";
 import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseIcon from "@mui/icons-material/Close";
+import { AddressCard } from "../../../components";
 import { Navbar } from "..";
 import { navItems } from "../navItems";
+import { useGetAddressQuery } from "../../../features/Address/AddressSlice";
+import { auth } from "../../../utils/firebase";
 
 export const Hamburger = () => {
   const theme = useTheme();
   const [hamburger, setHamburger] = useState({
     left: false,
   });
+  const uid = auth.currentUser?.uid;
+  const { data } = useGetAddressQuery(uid);
 
   const handleToggle =
     (anchor: string, open: boolean) =>
@@ -75,6 +80,7 @@ export const Hamburger = () => {
               sm: "0 24px 16px 24px",
             }}
           >
+            <AddressCard address={data?.address} />
             <Navbar navItems={navItems} />
           </Box>
         </Box>

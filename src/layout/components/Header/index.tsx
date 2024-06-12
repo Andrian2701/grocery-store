@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { Navbar, Hamburger, AccountMenu } from "..";
 import { navItems } from "../navItems";
 import Logo from "../../../assets/logo.png";
-import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -57,15 +57,6 @@ export const Header = () => {
             />
           </Box>
         </Box>
-        {/* <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap={0.5}
-        >
-          <FmdGoodRoundedIcon sx={{ color: theme.palette.primary.main }} />
-          <Typography variant="h4">Kyiv</Typography>
-        </Box> */}
         <Box display="flex" justifyContent="center" alignItems="center" gap={4}>
           <Box
             display={{ xs: "none", sm: "none", md: "flex" }}

@@ -35,7 +35,7 @@ export const AccountPage = () => {
           }}
         >
           <AccountCard currentUser={currentUser} />
-          <AddressCard address={data?.address} />
+          <AddressCard address={data?.address} title="Address" />
           <Box display="flex" flexDirection="column" gap="2rem">
             <Typography variant="h2">Order Translations</Typography>
             <Box display="flex" gap="2rem">
