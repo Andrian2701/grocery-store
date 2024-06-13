@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
-import { Navbar, Hamburger, AccountMenu } from "..";
+import { Navbar, Hamburger, AccountMenu, Cart } from "..";
 import { navItems } from "../navItems";
 import Logo from "../../../assets/logo.png";
 
@@ -57,7 +57,12 @@ export const Header = () => {
             />
           </Box>
         </Box>
-        <Box display="flex" justifyContent="center" alignItems="center" gap={4}>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          gap={{ xs: 1, sm: 1, md: "2rem" }}
+        >
           <Box
             display={{ xs: "none", sm: "none", md: "flex" }}
             justifyContent="center"
@@ -66,6 +71,7 @@ export const Header = () => {
           >
             <Navbar navItems={navItems.slice(4)} fontSize={13.5} />
           </Box>
+          <Cart />
           <AccountMenu />
         </Box>
       </Toolbar>

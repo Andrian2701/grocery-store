@@ -30,14 +30,12 @@ export const EditAccountForm = () => {
     },
   });
 
-  console.log("account", "render");
-
   const handleFormSubmit = async (formData: any) => {
     if (auth.currentUser) {
-      updateProfile(auth.currentUser, {
+      await updateProfile(auth.currentUser, {
         displayName: formData.name,
       });
-      updateEmail(auth.currentUser, formData.email);
+      await updateEmail(auth.currentUser, formData.email);
 
       dispatch(closeModal());
     }

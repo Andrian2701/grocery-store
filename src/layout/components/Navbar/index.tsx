@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MenuItem } from "@mui/material";
+import { ReactNode } from "react";
 
 type NavbarProps = {
   navItems: string[];

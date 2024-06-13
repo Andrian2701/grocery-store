@@ -11,8 +11,6 @@ export const LogOut = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleCloseModal = () => dispatch(closeModal());
-
   return (
     <Box
       sx={{
@@ -32,7 +30,7 @@ export const LogOut = () => {
       }}
     >
       <IconButton
-        onClick={handleCloseModal}
+        onClick={() => dispatch(closeModal())}
         sx={{ position: "absolute", right: 10, top: 10 }}
       >
         <CloseIcon />

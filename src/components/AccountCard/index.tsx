@@ -35,8 +35,8 @@ export const AccountCard = ({ currentUser }: AccountProps) => {
           alignItems="center"
           bgcolor="#e1e6f0"
           borderRadius={999}
-          width={{ xs: 80, sm: 100, md: 120 }}
-          height={{ xs: 80, sm: 100, md: 120 }}
+          width={{ xs: 65, sm: 100, md: 120 }}
+          height={{ xs: 65, sm: 100, md: 120 }}
           sx={{
             cursor: "pointer",
           }}
