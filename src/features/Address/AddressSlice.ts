@@ -10,11 +10,11 @@ export const addressApi = createApi({
     getAddress: builder.query<any, string | undefined>({
       async queryFn(uid) {
         if (!uid) {
-          throw new Error("uid is undefined");
+          return { data: [] };
         }
-        const locationRef = doc(db, "addresses", uid);
 
-        return new Promise((resolve, reject) => {
+        const locationRef = doc(db, "addresses", uid);
+        return new Promise((resolve) => {
           const unsubscribe = onSnapshot(locationRef, (snapshot) => {
             const data = snapshot.data();
             resolve({ data });

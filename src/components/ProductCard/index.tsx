@@ -11,6 +11,14 @@ type ProductCardProps = {
 export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   const theme = useTheme();
 
+  const formatQuantity = (q: number | undefined) => {
+    if (product?.units === "g-kg") {
+      return q && q >= 1000 ? `${(q / 1000).toFixed(1)}kg` : `${q}g`;
+    }
+
+    return `${q}pcs`;
+  };
+
   return (
     <>
       <Box
@@ -66,7 +74,7 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
                   fontSize="13.5px !important"
                   textAlign="center"
                 >
-                  {product?.quantity}pcs, Pricetag
+                  {formatQuantity(product?.quantity)}, Pricetag
                 </Typography>
               </Box>
               <Box

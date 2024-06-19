@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { Box, Button, styled, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 
 const SelectButton = styled(Button)(({ theme }) => ({
   minWidth: "1.8rem",
@@ -16,12 +18,45 @@ const SelectButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const QuantitySelector = () => {
+type QuantitySelectorProps = {
+  units: string;
+  quantity: number;
+  price: number;
+  onQuantityChange: (q: number, totalPrice: number) => void;
+};
+
+export const QuantitySelector = ({
+  quantity,
+  units,
+  price,
+  onQuantityChange,
+}: QuantitySelectorProps) => {
   const theme = useTheme();
+  const [q, setQ] = useState(quantity);
+  const [totalPrice, setTotalPrice] = useState(price * (quantity / 1000));
+  const formattedQuantity = useFormatQuantity(q, units);
+
+  useEffect(() => {
+    setTotalPrice((q / 1000) * price);
+    onQuantityChange(q, totalPrice);
+  }, [q, price, onQuantityChange]);
+
+  const handleIncrementQ = () =>
+    units === "g-kg"
+      ? setQ((prevQ) => prevQ + 200)
+      : setQ((prefQ) => prefQ + 1);
+
+  const handleDecrementQ = () => {
+    if (units === "g-kg" && q > 200) {
+      setQ((prevQ) => prevQ - 200);
+    } else if (units !== "g-kg" && q > 1) {
+      setQ((prevQ) => prevQ - 1);
+    }
+  };
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" gap="1rem">
-      <SelectButton>
+      <SelectButton onClick={handleIncrementQ}>
         <AddIcon sx={{ fontSize: "1.2rem" }} />
       </SelectButton>
       <Box
@@ -35,9 +70,9 @@ export const QuantitySelector = () => {
         justifyContent="center"
         fontWeight={600}
       >
-        2Kg
+        {formattedQuantity}
       </Box>
-      <SelectButton>
+      <SelectButton onClick={handleDecrementQ}>
         <RemoveIcon sx={{ fontSize: "1.2rem" }} />
       </SelectButton>
     </Box>

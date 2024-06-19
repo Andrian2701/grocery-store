@@ -25,6 +25,13 @@ const SearchResultDiv = styled(Box)({
 export const SearchResult = ({ searchQ, productsByQ }: SearchResultProps) => {
   const theme = useTheme();
 
+  const formatQuantity = (product: Product, q: number | undefined) => {
+    if (product.units === "g-kg") {
+      return q && q >= 1000 ? `${(q / 1000).toFixed(1)}kg` : `${q}g`;
+    }
+    return `${q}pcs`;
+  };
+
   return (
     <>
       {productsByQ.length !== 0 ? (
@@ -78,7 +85,7 @@ export const SearchResult = ({ searchQ, productsByQ }: SearchResultProps) => {
                       {product.name}
                     </Typography>
                     <Typography variant="subtitle1" fontSize="12px">
-                      {product.quantity}pcs, Pricetag
+                      {formatQuantity(product, product.quantity)}, Pricetag
                     </Typography>
                   </Box>
                 </Box>

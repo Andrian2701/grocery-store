@@ -7,4 +7,5 @@ export type Product = {
   price: number;
   calories: number;
   productId: number;
+  units: string;
 };
