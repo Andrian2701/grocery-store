@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Box, Button, Skeleton, Typography, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 import { Product } from "./types";
 
 type ProductCardProps = {
@@ -10,14 +11,10 @@ type ProductCardProps = {
 
 export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   const theme = useTheme();
-
-  const formatQuantity = (q: number | undefined) => {
-    if (product?.units === "g-kg") {
-      return q && q >= 1000 ? `${(q / 1000).toFixed(1)}kg` : `${q}g`;
-    }
-
-    return `${q}pcs`;
-  };
+  const formattedQuantity = useFormatQuantity(
+    product?.quantity,
+    product?.units
+  );
 
   return (
     <>
@@ -74,7 +71,7 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
                   fontSize="13.5px !important"
                   textAlign="center"
                 >
-                  {formatQuantity(product?.quantity)}, Pricetag
+                  {formattedQuantity}, Pricetag
                 </Typography>
               </Box>
               <Box

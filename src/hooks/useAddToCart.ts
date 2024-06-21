@@ -48,9 +48,12 @@ export const useAddToCart = ({
         );
       } else {
         updatedCartItems.push({
+          productId: selectedProduct.productId,
           name: selectedProduct.name,
           imgURL: selectedProduct.imgURL,
           quantity: selectedProduct.quantity,
+          units: selectedProduct.units,
+          category: selectedProduct.category,
           selectedQuantity: selectedQ,
           totalPrice: totalPrice,
         });

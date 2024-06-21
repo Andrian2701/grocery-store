@@ -6,3 +6,4 @@ export { PageLoader } from "./PageLoader";
 export { LogOut } from "./LogOut";
 export { AddressCard } from "./AddressCard";
 export { ModalWindow } from "./ModalWindow";
+export { ProductListItem } from "./ProductListItem";

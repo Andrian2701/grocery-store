@@ -3,9 +3,9 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { Box, InputAdornment, OutlinedInput, useTheme } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../utils/firebase";
 import { Product } from "../../components/ProductCard/types";
 import { SearchResult } from "./SearchResults";
+import { db } from "../../utils/firebase";
 
 type SearchItemsProps = {
   openBackdrop: boolean;
@@ -83,7 +83,7 @@ export const SearchItems = ({
             borderRadius: "0.8rem",
             border: "none",
             backgroundColor: openBackdrop
-              ? "#f9fafb"
+              ? "#ffffff"
               : theme.palette.primary.light,
             zIndex: openBackdrop ? 9999 : "none",
             "& .MuiOutlinedInput-notchedOutline": {

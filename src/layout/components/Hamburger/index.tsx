@@ -1,39 +1,27 @@
 import { useState } from "react";
-import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
+import { Navbar } from "..";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { AddressCard } from "../../../components";
-import { Navbar } from "..";
 import { navItems } from "../navItems";
+import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
 import { useGetAddressQuery } from "../../../features/Address/AddressSlice";
 import { auth } from "../../../utils/firebase";
 
 export const Hamburger = () => {
   const theme = useTheme();
+  const user = auth.currentUser;
   const [hamburger, setHamburger] = useState({
     left: false,
   });
-  const uid = auth.currentUser?.uid;
-  const { data } = useGetAddressQuery(uid);
-
-  const handleToggle =
-    (anchor: string, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
-      setHamburger({ ...hamburger, [anchor]: open });
-    };
+  const toggleDrawer = useToggleDrawer(setHamburger, "left");
+  const { data } = useGetAddressQuery(user?.uid);
 
   return (
     <>
       <IconButton
-        onClick={handleToggle("left", true)}
+        onClick={toggleDrawer(true)}
         sx={{
           color: theme.palette.secondary.main,
           display: { xs: "block", sm: "block", md: "none" },
@@ -44,15 +32,16 @@ export const Hamburger = () => {
       >
         <MenuRoundedIcon />
       </IconButton>
+
       <Drawer
-        anchor={"left"}
-        open={hamburger["left"]}
-        onClose={handleToggle("left", false)}
+        anchor="left"
+        open={hamburger.left}
+        onClose={toggleDrawer(false)}
         sx={{ position: "relative" }}
       >
         <Box
-          width={{ xs: "100vw", sm: "25rem" }}
-          height="100%"
+          width={{ xs: "100vw", sm: "35rem" }}
+          height="100vh"
           display="flex"
           flexDirection="column"
         >
@@ -60,25 +49,23 @@ export const Hamburger = () => {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            position="fixed"
             height={{ xs: 56, sm: 64 }}
-            width={{ xs: "100%", sm: 400 }}
-            padding={{ xs: "0 16px 0 16px", sm: "0 24px 0 24px" }}
+            width="100%"
+            padding={{ xs: "0 16px", sm: "0 24px" }}
           >
             <Typography variant="h4">All</Typography>
-            <IconButton onClick={handleToggle("left", false)}>
+            <IconButton onClick={toggleDrawer(false)}>
               <CloseIcon />
             </IconButton>
           </Box>
           <Box
             display="flex"
             flexDirection="column"
+            flex={1}
+            height="100%"
+            overflow="auto"
+            padding={{ xs: "0 16px 16px 16px", sm: "0 24px 16px 24px" }}
             gap={4}
-            marginTop={10}
-            padding={{
-              xs: "0 16px 16px 16px",
-              sm: "0 24px 16px 24px",
-            }}
           >
             <AddressCard address={data?.address} />
             <Navbar navItems={navItems} />
