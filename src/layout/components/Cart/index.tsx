@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import {
   Box,
@@ -20,14 +20,23 @@ import emptyCart from "../../../assets/empty-cart.png";
 
 export const Cart = () => {
   const theme = useTheme();
-  const [hamburger, setHamburger] = useState({
+  const [cart, setCart] = useState({
     right: false,
   });
-  const toggleDrawer = useToggleDrawer(setHamburger, "right");
+  const toggleDrawer = useToggleDrawer(setCart, "right");
   const showIcon = useMediaQuery("only screen and (max-width: 768px)");
   const user = auth.currentUser;
   const { data: cartItems } = useGetCartItemsQuery(user?.uid);
   const isCartEmpty = cartItems?.length === 0;
+
+  const cartTotal = useMemo(
+    () =>
+      cartItems?.reduce(
+        (total: number, item: CartItems) => total + item.totalPrice,
+        0
+      ),
+    [cartItems]
+  );
 
   return (
     <>
@@ -43,7 +52,7 @@ export const Cart = () => {
 
       <Drawer
         anchor="right"
-        open={hamburger.right}
+        open={cart.right}
         onClose={toggleDrawer(false)}
         sx={{ position: "relative" }}
       >
@@ -127,7 +136,7 @@ export const Cart = () => {
               padding={{ xs: "0 16px", sm: "0 24px" }}
             >
               <Typography variant="h4" fontWeight="400 !important">
-                Total: 124$
+                Total: {cartTotal}$
               </Typography>
               <Button>To Checkout</Button>
             </Box>

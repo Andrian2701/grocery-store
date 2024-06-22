@@ -7,6 +7,7 @@ import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../utils/firebase";
 import { Product } from "../ProductCard/types";
 import { CartItems } from "../../features/CartItems/types";
+import { useAddToCart } from "../../hooks/useAddToCart";
 
 type ProductListItemProps = {
   data: Product | CartItems;
@@ -28,6 +29,15 @@ export const ProductListItem = ({
       : (data as Product).quantity,
     data.units
   );
+
+  const selectedProduct: any = { ...data };
+  const { ["quantity"]: selectedQ, ["price"]: totalPrice } = selectedProduct;
+
+  const { handleAddToCart } = useAddToCart({
+    selectedProduct,
+    selectedQ,
+    totalPrice,
+  });
 
   const handleRemoveCartItem = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -116,6 +126,11 @@ export const ProductListItem = ({
               maxWidth: "1.8rem",
               height: "1.8rem",
               borderRadius: "0.3rem",
+            }}
+            onClick={(e: React.MouseEvent) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleAddToCart();
             }}
           >
             <AddIcon sx={{ fontSize: "1.2rem" }} />

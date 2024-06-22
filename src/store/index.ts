@@ -13,6 +13,7 @@ export const store = configureStore({
     [addressApi.reducerPath]: addressApi.reducer,
     [cartItemsApi.reducerPath]: cartItemsApi.reducer,
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(firestoreApi.middleware)
