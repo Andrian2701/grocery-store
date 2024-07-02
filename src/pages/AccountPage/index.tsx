@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
-import { onAuthStateChanged } from "firebase/auth";
 import { PageLoader, AccountCard, AddressCard } from "../../components";
-import { User } from "../../components/AccountCard/types";
-import { auth } from "../../utils/firebase";
-import { useGetAddressQuery } from "../../features/Address/AddressSlice";
+import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
+import { useGetAddress } from "../../hooks/useGetAddress";
 
 export const AccountPage = () => {
   const theme = useTheme();
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const { data, isLoading } = useGetAddressQuery(currentUser?.uid);
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(
-      auth,
-      (user: any) => user && setCurrentUser(user)
-    );
-
-    return () => unsub();
-  }, []);
+  const currentUser = useGetCurrentUser();
+  const address = useGetAddress(currentUser?.uid);
 
   return (
     <>
-      {currentUser && !isLoading ? (
+      {currentUser ? (
         <Box
           display="flex"
           flexDirection="column"
@@ -35,7 +23,7 @@ export const AccountPage = () => {
           }}
         >
           <AccountCard currentUser={currentUser} />
-          <AddressCard address={data?.address} title="Address" />
+          <AddressCard address={address} title="Address" />
           <Box display="flex" flexDirection="column" gap="2rem">
             <Typography variant="h2">Order Translations</Typography>
             <Box display="flex" gap="2rem">

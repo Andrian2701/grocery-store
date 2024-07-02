@@ -6,17 +6,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import { AddressCard } from "../../../components";
 import { navItems } from "../navItems";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
-import { useGetAddressQuery } from "../../../features/Address/AddressSlice";
-import { auth } from "../../../utils/firebase";
+import { useGetAddress } from "../../../hooks/useGetAddress";
+import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
 
 export const Hamburger = () => {
   const theme = useTheme();
-  const user = auth.currentUser;
   const [hamburger, setHamburger] = useState({
     left: false,
   });
+  const currentUser = useGetCurrentUser();
   const toggleDrawer = useToggleDrawer(setHamburger, "left");
-  const { data } = useGetAddressQuery(user?.uid);
+  const address = useGetAddress(currentUser?.uid);
 
   return (
     <>
@@ -67,7 +67,7 @@ export const Hamburger = () => {
             padding={{ xs: "0 16px 16px 16px", sm: "0 24px 16px 24px" }}
             gap={4}
           >
-            <AddressCard address={data?.address} />
+            <AddressCard address={address} />
             <Navbar navItems={navItems} />
           </Box>
         </Box>

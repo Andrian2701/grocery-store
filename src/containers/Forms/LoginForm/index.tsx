@@ -55,13 +55,9 @@ export const LoginForm = () => {
           })
         );
         setTimeout(() => {
-          dispatch(
-            setNotification({
-              open: false,
-            })
-          ),
-            navigate("/vegetables");
-        }, 2000);
+          dispatch(setNotification({ open: false }));
+          navigate("/vegetables");
+        }, 1500);
       })
       .catch(() => {
         dispatch(

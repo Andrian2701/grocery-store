@@ -2,14 +2,14 @@ import { useDispatch } from "react-redux";
 import { Box, MenuItem, Typography, useTheme } from "@mui/material";
 import { ModalWindow } from "../../components";
 import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
-import { User } from "./types";
+import { CurrentUser } from "../../hooks/useGetCurrentUser";
 import avatar from "../../assets/avatar.jpeg";
 
-type AccountProps = {
-  currentUser: User;
+type AccountCardProps = {
+  currentUser: CurrentUser;
 };
 
-export const AccountCard = ({ currentUser }: AccountProps) => {
+export const AccountCard = ({ currentUser }: AccountCardProps) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 

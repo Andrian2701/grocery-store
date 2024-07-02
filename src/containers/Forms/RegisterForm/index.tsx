@@ -68,7 +68,7 @@ export const RegisterForm = () => {
           })
         ),
           navigate("/vegetables");
-      }, 2000);
+      }, 1500);
     } catch (error: any) {
       dispatch(
         setNotification({

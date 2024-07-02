@@ -3,7 +3,7 @@ import { User } from "firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
-type CurrentUser = User | null;
+export type CurrentUser = User | null;
 
 export const useGetCurrentUser = () => {
   const [currentUser, setCurrentUser] = useState<CurrentUser>(null);
