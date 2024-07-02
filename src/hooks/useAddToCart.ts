@@ -67,7 +67,7 @@ export const useAddToCart = ({
           color: theme.palette.primary.main,
         })
       );
-      setTimeout(() => dispatch(setNotification({ open: false })), 2000);
+      setTimeout(() => dispatch(setNotification({ open: false })), 1500);
     }
   };
 

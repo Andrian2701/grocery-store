@@ -1,59 +1,32 @@
-import { useMemo, useState } from "react";
-import { useMediaQuery } from "@react-hook/media-query";
-import {
-  Box,
-  Button,
-  Drawer,
-  IconButton,
-  MenuItem,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useState } from "react";
+import { Box, Button, Drawer, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ProductListItem } from "../../../components";
-import { useGetCartItemsQuery } from "../../../features/CartItems/CartItemsSlice";
-import { CartItems } from "../../../features/CartItems/types";
+import { CartWidget, CartTotal } from "./components";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
-import { auth } from "../../../utils/firebase";
-import emptyCart from "../../../assets/empty-cart.png";
+import { CartItems, useGetCartItems } from "../../../hooks/useGetCartItems";
+import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
+import emptyCartImg from "../../../assets/empty-cart.png";
 
 export const Cart = () => {
-  const theme = useTheme();
   const [cart, setCart] = useState({
     right: false,
   });
   const toggleDrawer = useToggleDrawer(setCart, "right");
-  const showIcon = useMediaQuery("only screen and (max-width: 768px)");
-  const user = auth.currentUser;
-  const { data: cartItems } = useGetCartItemsQuery(user?.uid);
-  const isCartEmpty = cartItems?.length === 0;
-
-  const cartTotal = useMemo(
-    () =>
-      cartItems?.reduce(
-        (total: number, item: CartItems) => total + item.totalPrice,
-        0
-      ),
-    [cartItems]
-  );
+  const currentUser = useGetCurrentUser();
+  const cartItems = useGetCartItems(currentUser?.uid);
+  const emptyCart = cartItems?.length === 0;
 
   return (
     <>
-      <MenuItem onClick={toggleDrawer(true)} sx={{ fontSize: 13.5 }}>
-        {showIcon ? (
-          <IconButton>
-            <ShoppingCartIcon sx={{ color: theme.palette.primary.main }} />
-          </IconButton>
-        ) : (
-          "Cart"
-        )}
-      </MenuItem>
-
+      <CartWidget
+        cartItemsCount={cartItems?.length}
+        toggleDrawer={toggleDrawer(!cart.right)}
+      />
       <Drawer
         anchor="right"
         open={cart.right}
-        onClose={toggleDrawer(false)}
+        onClose={toggleDrawer(!cart.right)}
         sx={{ position: "relative" }}
       >
         <Box
@@ -70,8 +43,8 @@ export const Cart = () => {
             width="100%"
             padding={{ xs: "0 16px", sm: "0 24px" }}
           >
-            <Typography variant="h4">All</Typography>
-            <IconButton onClick={toggleDrawer(false)}>
+            <Typography variant="h4">Cart</Typography>
+            <IconButton onClick={toggleDrawer(!cart.right)}>
               <CloseIcon />
             </IconButton>
           </Box>
@@ -82,27 +55,25 @@ export const Cart = () => {
             height="100%"
             overflow="auto"
           >
-            {!isCartEmpty ? (
-              <>
-                {cartItems?.map((product: CartItems) => (
-                  <ProductListItem
-                    key={product.name}
-                    data={product}
-                    uid={user?.uid}
-                    isCartItem={true}
-                    setCart={toggleDrawer(false)}
-                  />
-                ))}
-              </>
+            {!emptyCart ? (
+              cartItems?.map((product: CartItems) => (
+                <ProductListItem
+                  key={product.name}
+                  data={product}
+                  uid={currentUser?.uid}
+                  isCartItem={true}
+                  setCart={toggleDrawer(!cart.right)}
+                />
+              ))
             ) : (
               <>
                 <Box width="100%" display="flex" justifyContent="center">
                   <Box
                     component="img"
-                    src={emptyCart}
+                    src={emptyCartImg}
                     alt="empty-cart"
                     width="15rem"
-                    height="15rem"
+                    height="20rem"
                   />
                 </Box>
                 <Box
@@ -126,7 +97,7 @@ export const Cart = () => {
               </>
             )}
           </Box>
-          {!isCartEmpty && (
+          {!emptyCart && (
             <Box
               display="flex"
               justifyContent="space-between"
@@ -135,9 +106,7 @@ export const Cart = () => {
               height={{ xs: 56, sm: 64 }}
               padding={{ xs: "0 16px", sm: "0 24px" }}
             >
-              <Typography variant="h4" fontWeight="400 !important">
-                Total: {cartTotal}$
-              </Typography>
+              <CartTotal cartItems={cartItems} />
               <Button>To Checkout</Button>
             </Box>
           )}
