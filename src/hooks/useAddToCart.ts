@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "../utils/firebase";
 import { Product } from "../components/ProductCard/types";
-import { auth, db } from "../utils/firebase";
 import { setNotification } from "../features/Notification/NotificationSlice";
 import { useFormatQuantity } from "./useFormatQuantity";
+import { useGetCurrentUser } from "./useGetCurrentUser";
 
-type useAddToCartProps = {
+type Props = {
   selectedProduct: Product;
   selectedQ: number | undefined;
   totalPrice: number | undefined;
@@ -16,20 +17,24 @@ export const useAddToCart = ({
   selectedProduct,
   selectedQ = 0,
   totalPrice,
-}: useAddToCartProps) => {
+}: Props) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const user = auth?.currentUser;
+  const currentUser = useGetCurrentUser();
   const formattedQuantity = useFormatQuantity(selectedQ, selectedProduct.units);
 
   const handleAddToCart = async () => {
-    if (user) {
-      const cartsRef = doc(db, "carts", user.uid);
+    if (currentUser) {
+      const cartsRef = doc(db, "carts", currentUser.uid);
       const docSnap = await getDoc(cartsRef);
 
       let updatedCartItems = [];
       if (docSnap.exists()) {
         updatedCartItems = docSnap.data().items || [];
+      } else {
+        setDoc(cartsRef, {
+          items: arrayUnion(),
+        });
       }
 
       const itemIndex = updatedCartItems.findIndex(
