@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Box, Button, Skeleton, Typography, useTheme } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Box, Skeleton, Typography, useTheme } from "@mui/material";
 import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 import { Product } from "./types";
+import { AddToCartButton } from "../../components";
 
 type ProductCardProps = {
   product?: Product;
@@ -12,8 +12,8 @@ type ProductCardProps = {
 export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   const theme = useTheme();
   const formattedQuantity = useFormatQuantity(
-    product?.quantity,
-    product?.units
+    product?.quantity ?? 0,
+    product?.units ?? ""
   );
 
   return (
@@ -83,16 +83,11 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
                 <Typography variant="h2" fontSize="1.2rem !important">
                   ${product?.price}
                 </Typography>
-                <Button
-                  sx={{
-                    minWidth: "1.8rem",
-                    maxWidth: "1.8rem",
-                    height: "1.8rem",
-                    borderRadius: "0.3rem",
-                  }}
-                >
-                  <AddIcon sx={{ fontSize: "1.2rem" }} />
-                </Button>
+                <AddToCartButton
+                  selectedProduct={product}
+                  selectedQ={product?.quantity}
+                  totalPrice={product?.price}
+                />
               </Box>
             </>
           ) : (

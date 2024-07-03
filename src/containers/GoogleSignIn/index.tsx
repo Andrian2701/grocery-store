@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import googleIcon from "../../assets/icons/google-icon.webp";
-import { setNotification } from "../../features/Notification/NotificationSlice";
+import { setNotification } from "../../store/features/Notification/NotificationSlice";
 import { auth, provider } from "../../utils/firebase";
 
 export const GoogleSignIn = () => {

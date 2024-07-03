@@ -36,7 +36,7 @@ export const SearchResult = ({ searchQ, productsByQ }: SearchResultProps) => {
             overflow="auto"
           >
             {productsByQ?.map((product) => (
-              <ProductListItem key={product.name} data={product} />
+              <ProductListItem key={product.productId} data={product} />
             ))}
           </Box>
         </SearchResultDiv>

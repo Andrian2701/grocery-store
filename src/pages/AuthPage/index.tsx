@@ -24,7 +24,7 @@ export const AuthPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "25rem",
+          width: { xs: "100%", sm: "25rem" },
         }}
       >
         <Box width={350} height={350}>

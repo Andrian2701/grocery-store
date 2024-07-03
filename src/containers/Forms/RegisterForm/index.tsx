@@ -17,7 +17,7 @@ import {
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebase";
 import { FormData } from "../types";
-import { setNotification } from "../../../features/Notification/NotificationSlice";
+import { setNotification } from "../../../store/features/Notification/NotificationSlice";
 import { Notification } from "../../../components";
 import { FormError } from "../FormError";
 
@@ -94,7 +94,7 @@ export const RegisterForm = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "25rem",
+          width: { sx: "100%", sm: "25rem" },
           minHeight: "100vh",
         }}
       >

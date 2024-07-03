@@ -4,7 +4,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../features/ModalWindow/ModalWindowSlice";
+import { closeModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 
 export const LogOut = () => {
   const theme = useTheme();

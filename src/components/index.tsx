@@ -7,3 +7,4 @@ export { LogOut } from "./LogOut";
 export { AddressCard } from "./AddressCard";
 export { ModalWindow } from "./ModalWindow";
 export { ProductListItem } from "./ProductListItem";
+export { AddToCartButton } from "./AddToCartButton";

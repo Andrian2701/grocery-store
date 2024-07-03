@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { IoPencilSharp } from "react-icons/io5";
 import { ModalWindow } from "../../components";
-import { openModal } from "../../features/ModalWindow/ModalWindowSlice";
+import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 
 type AddressCardProps = {
   address: string;

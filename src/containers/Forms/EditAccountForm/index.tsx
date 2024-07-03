@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { FormError } from "../FormError";
 import { auth } from "../../../utils/firebase";
-import { closeModal } from "../../../features/ModalWindow/ModalWindowSlice";
+import { closeModal } from "../../../store/features/ModalWindow/ModalWindowSlice";
 
 export const EditAccountForm = () => {
   const theme = useTheme();

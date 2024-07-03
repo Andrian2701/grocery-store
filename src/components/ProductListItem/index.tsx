@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
+import { AddToCartButton } from "../AddToCartButton";
 import { db } from "../../utils/firebase";
 import { Product } from "../ProductCard/types";
-import { CartItems } from "../../features/CartItems/types";
-import { useAddToCart } from "../../hooks/useAddToCart";
+import { CartItems } from "../../hooks/useGetCartItems";
 
 type ProductListItemProps = {
   data: Product | CartItems;
-  isCartItem: boolean;
-  setCart: any;
+  isCartItem?: boolean;
+  setCart?: any;
   uid?: string;
 };
 
@@ -29,15 +28,6 @@ export const ProductListItem = ({
       : (data as Product).quantity,
     data.units
   );
-
-  const selectedProduct: any = { ...data };
-  const { ["quantity"]: selectedQ, ["price"]: totalPrice } = selectedProduct;
-
-  const { handleAddToCart } = useAddToCart({
-    selectedProduct,
-    selectedQ,
-    totalPrice,
-  });
 
   const handleRemoveCartItem = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -120,21 +110,11 @@ export const ProductListItem = ({
             <DeleteForeverIcon sx={{ color: "#808588" }} />
           </IconButton>
         ) : (
-          <Button
-            sx={{
-              minWidth: "1.8rem",
-              maxWidth: "1.8rem",
-              height: "1.8rem",
-              borderRadius: "0.3rem",
-            }}
-            onClick={(e: React.MouseEvent) => {
-              e.preventDefault();
-              e.stopPropagation();
-              handleAddToCart();
-            }}
-          >
-            <AddIcon sx={{ fontSize: "1.2rem" }} />
-          </Button>
+          <AddToCartButton
+            selectedProduct={data}
+            selectedQ={data.quantity}
+            totalPrice={data.price}
+          />
         )}
       </Box>
     </Box>

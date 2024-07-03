@@ -1,6 +1,6 @@
 import { Modal } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../features/ModalWindow/ModalWindowSlice";
+import { closeModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 import { LogOut } from "../LogOut";
 import { EditAccountForm } from "../../containers";
 import { SetAddress } from "../AddressCard/SetAddress";

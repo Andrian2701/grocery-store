@@ -7,20 +7,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "./index.css";
 import { ProductCard } from "../../components";
-import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
 import { Product } from "../../components/ProductCard/types";
+import { useGetProductsQuery } from "../../store/features/Products/ProductsSlice";
 
 export const ExclusiveOffers = () => {
   const theme = useTheme();
   const { category } = useParams();
-  const { data, isLoading } = useGetProductsQuery(category);
+  const { data: products, isLoading } = useGetProductsQuery(category);
 
-  const memoizedProducts = useMemo(
-    () =>
-      Array.isArray(data?.data) &&
-      data.data.filter((product: Product) => product.productId < 8),
+  const productsToShow = useMemo(
+    () => products?.data.filter((product: Product, index: number) => index < 7),
 
-    [data]
+    [products]
   );
 
   return (
@@ -45,17 +43,19 @@ export const ExclusiveOffers = () => {
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className="swiper-container"
         >
-          {!isLoading ? (
-            memoizedProducts.map((product: Product) => (
-              <SwiperSlide key={product.name}>
-                <ProductCard product={product} isLoading={isLoading} />
-              </SwiperSlide>
-            ))
-          ) : (
+          {isLoading ? (
             <>
               {Array.from({ length: 7 }).map((_, index) => (
                 <SwiperSlide key={index}>
                   <ProductCard isLoading={isLoading} />
+                </SwiperSlide>
+              ))}
+            </>
+          ) : (
+            <>
+              {productsToShow.map((product: Product) => (
+                <SwiperSlide key={product.productId}>
+                  <ProductCard product={product} isLoading={isLoading} />
                 </SwiperSlide>
               ))}
             </>

@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { Product } from "../components/ProductCard/types";
-import { setNotification } from "../features/Notification/NotificationSlice";
+import { setNotification } from "../store/features/Notification/NotificationSlice";
 import { useFormatQuantity } from "./useFormatQuantity";
 import { useGetCurrentUser } from "./useGetCurrentUser";
 

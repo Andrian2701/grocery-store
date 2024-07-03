@@ -20,7 +20,7 @@ import {
 } from "firebase/auth";
 import { Notification } from "../../../components";
 import { FormError } from "../FormError";
-import { setNotification } from "../../../features/Notification/NotificationSlice";
+import { setNotification } from "../../../store/features/Notification/NotificationSlice";
 import { auth } from "../../../utils/firebase";
 import { FormData } from "../types";
 
@@ -105,7 +105,7 @@ export const LoginForm = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          width: "25rem",
+          width: { sx: "100%", sm: "25rem" },
           minHeight: "100vh",
         }}
       >

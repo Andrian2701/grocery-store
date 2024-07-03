@@ -33,18 +33,12 @@ export const QuantitySelector = ({
 }: QuantitySelectorProps) => {
   const theme = useTheme();
   const [q, setQ] = useState(quantity);
-  const [totalPrice, setTotalPrice] = useState(price * (quantity / 1000));
   const formattedQuantity = useFormatQuantity(q, units);
-
-  useEffect(() => {
-    setTotalPrice((q / 1000) * price);
-    onQuantityChange(q, totalPrice);
-  }, [q, price, onQuantityChange]);
 
   const handleIncrementQ = () =>
     units === "g-kg"
       ? setQ((prevQ) => prevQ + 200)
-      : setQ((prefQ) => prefQ + 1);
+      : setQ((prevQ) => prevQ + 1);
 
   const handleDecrementQ = () => {
     if (units === "g-kg" && q > 200) {
@@ -53,6 +47,13 @@ export const QuantitySelector = ({
       setQ((prevQ) => prevQ - 1);
     }
   };
+
+  useEffect(() => {
+    const calculateTotalPrice = () =>
+      units === "g-kg" ? price * (q / 1000) : price * q;
+
+    onQuantityChange(q, calculateTotalPrice());
+  }, [q, price, onQuantityChange, units]);
 
   return (
     <Box display="flex" alignItems="center" justifyContent="center" gap="1rem">

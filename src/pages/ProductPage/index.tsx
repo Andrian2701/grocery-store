@@ -1,11 +1,15 @@
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { QuantitySelector } from "../../containers";
-import { Categories, Notification, PageLoader } from "../../components";
+import {
+  AddToCartButton,
+  Categories,
+  Notification,
+  PageLoader,
+} from "../../components";
 import { Product } from "../../components/ProductCard/types";
-import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
-import { useAddToCart } from "../../hooks/useAddToCart";
+import { useGetProductsQuery } from "../../store/features/Products/ProductsSlice";
 
 export const ProductPage = () => {
   const [selectedQ, setSelectedQ] = useState<number>();
@@ -19,12 +23,6 @@ export const ProductPage = () => {
       products.data.find((product: Product) => product.name === name),
     [products, name]
   );
-
-  const { handleAddToCart } = useAddToCart({
-    selectedProduct,
-    selectedQ,
-    totalPrice,
-  });
 
   return (
     <>
@@ -106,9 +104,12 @@ export const ProductPage = () => {
                 </Box>
               </Box>
               <Categories title="Related Items" />
-              <Button sx={{ width: "100%" }} onClick={handleAddToCart}>
-                Add To Cart
-              </Button>
+              <AddToCartButton
+                title="Add To Cart"
+                selectedProduct={selectedProduct}
+                selectedQ={selectedQ}
+                totalPrice={totalPrice}
+              />
             </Box>
           </Box>
         </>

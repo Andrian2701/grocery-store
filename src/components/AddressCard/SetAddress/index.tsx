@@ -12,7 +12,7 @@ import { SuggestedPlaces } from "./SuggestedPlaces";
 import { API_KEY } from "./const";
 import map from "../../../assets/map.jpeg";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../../features/ModalWindow/ModalWindowSlice";
+import { closeModal } from "../../../store/features/ModalWindow/ModalWindowSlice";
 
 export const SetAddress = () => {
   const theme = useTheme();

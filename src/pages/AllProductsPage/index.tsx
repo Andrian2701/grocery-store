@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
-import { useGetProductsQuery } from "../../features/Products/ProductsSlice";
+import { useGetProductsQuery } from "../../store/features/Products/ProductsSlice";
 import { Product } from "../../components/ProductCard/types";
 import { ProductCard } from "../../components";
 
 export const AllProductsPage = () => {
   const { category } = useParams();
-  const { data, isLoading } = useGetProductsQuery(category);
+  const { data: products, isLoading } = useGetProductsQuery(category);
 
   return (
     <Box
@@ -22,9 +22,9 @@ export const AllProductsPage = () => {
       }}
     >
       {!isLoading ? (
-        data.data.map((product: Product) => (
+        products.data.map((product: Product) => (
           <ProductCard
-            key={product.name}
+            key={product.productId}
             product={product}
             isLoading={isLoading}
           />

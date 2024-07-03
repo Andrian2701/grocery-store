@@ -1,30 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Box, Menu, MenuItem, useTheme } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import { onAuthStateChanged } from "firebase/auth";
 import { ModalWindow } from "../../../components";
-import { openModal } from "../../../features/ModalWindow/ModalWindowSlice";
-import { auth } from "../../../utils/firebase";
+import { openModal } from "../../../store/features/ModalWindow/ModalWindowSlice";
+import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
 import avatar from "../../../assets/avatar.jpeg";
-import { User } from "../../../components/AccountCard/types";
 
 export const AccountMenu = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const [currentUser, setCurrentUser] = useState<User | null>();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(
-      auth,
-      (user: any) => user && setCurrentUser(user)
-    );
-
-    return () => unsub();
-  }, []);
+  const currentUser = useGetCurrentUser();
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLImageElement>) =>
     setAnchorEl(event.currentTarget);
