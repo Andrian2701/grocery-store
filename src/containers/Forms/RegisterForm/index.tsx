@@ -18,7 +18,6 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebase";
 import { FormData } from "../types";
 import { setNotification } from "../../../store/features/Notification/NotificationSlice";
-import { Notification } from "../../../components";
 import { FormError } from "../FormError";
 
 export const RegisterForm = () => {
@@ -87,7 +86,6 @@ export const RegisterForm = () => {
           <CloseIcon />
         </IconButton>
       </Link>
-      <Notification />
       <Container
         sx={{
           display: "flex",

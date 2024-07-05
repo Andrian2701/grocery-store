@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { Box, MenuItem, Typography, useTheme } from "@mui/material";
-import { ModalWindow } from "../../components";
 import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 import { CurrentUser } from "../../hooks/useGetCurrentUser";
 import avatar from "../../assets/avatar.jpeg";
@@ -64,7 +63,6 @@ export const AccountCard = ({ currentUser }: AccountCardProps) => {
           >
             Change Account Data
           </MenuItem>
-          <ModalWindow />
         </Box>
       </Box>
     </Box>

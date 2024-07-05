@@ -8,7 +8,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { GoogleSignIn } from "../../containers";
-import { Notification } from "../../components";
 import deliveryBoy from "../../assets/delivery-boy.png";
 import facebookIcon from "../../assets/icons/facebook-icon.png";
 
@@ -17,7 +16,6 @@ export const AuthPage = () => {
 
   return (
     <Box bgcolor="#e5f3fd" minHeight="100vh" display="flex">
-      <Notification />
       <Container
         sx={{
           display: "flex",

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Box, Menu, MenuItem, useTheme } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import { ModalWindow } from "../../../components";
 import { openModal } from "../../../store/features/ModalWindow/ModalWindowSlice";
 import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
 import avatar from "../../../assets/avatar.jpeg";
@@ -98,7 +97,6 @@ export const AccountMenu = () => {
         >
           Logout
         </MenuItem>
-        <ModalWindow />
       </Menu>
     </>
   );

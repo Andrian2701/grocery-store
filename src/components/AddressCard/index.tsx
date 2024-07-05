@@ -2,7 +2,6 @@ import { Box, MenuItem, Typography, useTheme } from "@mui/material";
 import { useDispatch } from "react-redux";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { IoPencilSharp } from "react-icons/io5";
-import { ModalWindow } from "../../components";
 import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 
 type AddressCardProps = {
@@ -32,12 +31,11 @@ export const AddressCard = ({ address, title }: AddressCardProps) => {
                     marginTop: "2rem",
                   }}
                 >
-                  Set Delivery Address
+                  Change Delivery Address
                 </MenuItem>
               </Box>
             </Box>
           </Box>
-          <ModalWindow />
         </>
       ) : (
         <>
@@ -65,7 +63,6 @@ export const AddressCard = ({ address, title }: AddressCardProps) => {
               <IoPencilSharp />
             </MenuItem>
           </Box>
-          <ModalWindow />
         </>
       )}
     </>

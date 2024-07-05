@@ -18,7 +18,6 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { Notification } from "../../../components";
 import { FormError } from "../FormError";
 import { setNotification } from "../../../store/features/Notification/NotificationSlice";
 import { auth } from "../../../utils/firebase";
@@ -98,7 +97,6 @@ export const LoginForm = () => {
           <CloseIcon />
         </IconButton>
       </Link>
-      <Notification />
       <Container
         sx={{
           display: "flex",

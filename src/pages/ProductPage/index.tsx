@@ -2,12 +2,7 @@ import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { QuantitySelector } from "../../containers";
-import {
-  AddToCartButton,
-  Categories,
-  Notification,
-  PageLoader,
-} from "../../components";
+import { AddToCartButton, Categories, PageLoader } from "../../components";
 import { Product } from "../../components/ProductCard/types";
 import { useGetProductsQuery } from "../../store/features/Products/ProductsSlice";
 
@@ -28,7 +23,6 @@ export const ProductPage = () => {
     <>
       {!isLoading ? (
         <>
-          <Notification />
           <Box
             display="flex"
             flexDirection={{ xs: "column", sm: "column", md: "row" }}

@@ -49,7 +49,12 @@ export const LogOut = () => {
         </Typography>
         <MenuItem
           sx={{ color: theme.palette.primary.main }}
-          onClick={() => signOut(auth).then(() => navigate("/login"))}
+          onClick={() =>
+            signOut(auth).then(() => {
+              navigate("/login");
+              dispatch(closeModal());
+            })
+          }
         >
           Logout
         </MenuItem>

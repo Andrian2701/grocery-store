@@ -24,7 +24,7 @@ export const Notification = () => {
     <Snackbar
       open={open}
       anchorOrigin={{ vertical, horizontal }}
-      sx={{ marginTop: { xs: "40px", sm: 0 } }}
+      sx={{ marginTop: { xs: "10px", sm: 0 } }}
     >
       <Alert
         variant="filled"

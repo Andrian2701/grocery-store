@@ -1,6 +1,9 @@
 import { List, ListItem, CircularProgress } from "@mui/material";
-import { auth, db } from "../../../utils/firebase";
+import { useDispatch } from "react-redux";
 import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../../utils/firebase";
+import { setNotification } from "../../../store/features/Notification/NotificationSlice";
+import { theme } from "../../../theme";
 
 type Data = {
   description: string;
@@ -21,6 +24,7 @@ export const SuggestedPlaces = ({
   handleCloseModal,
 }: SuggestedPlacesProps) => {
   const userUid = auth.currentUser?.uid;
+  const dispatch = useDispatch();
 
   const handleSetLocation = async (selectedAddress: string) => {
     if (userUid && db) {
@@ -30,6 +34,15 @@ export const SuggestedPlaces = ({
 
     setSearchQ("");
     handleCloseModal();
+
+    dispatch(
+      setNotification({
+        open: true,
+        title: `Successfull changes`,
+        color: theme.palette.primary.main,
+      })
+    );
+    setTimeout(() => dispatch(setNotification({ open: false })), 1500);
   };
 
   return (

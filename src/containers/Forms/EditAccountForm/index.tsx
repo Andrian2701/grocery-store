@@ -13,6 +13,7 @@ import {
 import { FormError } from "../FormError";
 import { auth } from "../../../utils/firebase";
 import { closeModal } from "../../../store/features/ModalWindow/ModalWindowSlice";
+import { setNotification } from "../../../store/features/Notification/NotificationSlice";
 
 export const EditAccountForm = () => {
   const theme = useTheme();
@@ -38,6 +39,14 @@ export const EditAccountForm = () => {
       await updateEmail(auth.currentUser, formData.email);
 
       dispatch(closeModal());
+      dispatch(
+        setNotification({
+          open: true,
+          title: `Successfull changes`,
+          color: theme.palette.primary.main,
+        })
+      );
+      setTimeout(() => dispatch(setNotification({ open: false })), 1500);
     }
   };
 
