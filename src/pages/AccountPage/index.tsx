@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import { PageLoader, AccountCard, AddressCard } from "../../components";
+import { PageLoader, AccountBar, AddressBar } from "../../components";
 import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
 import { useGetAddress } from "../../hooks/useGetAddress";
 
@@ -22,8 +22,8 @@ export const AccountPage = () => {
             md: "0 48px 48px 48px",
           }}
         >
-          <AccountCard currentUser={currentUser} />
-          <AddressCard address={address} title="Address" />
+          <AccountBar currentUser={currentUser} />
+          <AddressBar address={address} title="Address" />
           <Box display="flex" flexDirection="column" gap="2rem">
             <Typography variant="h2">Order Translations</Typography>
             <Box display="flex" gap="2rem">

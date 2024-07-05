@@ -1,10 +1,12 @@
 export { Notification } from "./Notification";
 export { ProductCard } from "./ProductCard";
 export { Categories } from "./Categories";
-export { AccountCard } from "./AccountCard";
+export { AccountBar } from "./AccountBar";
 export { PageLoader } from "./PageLoader";
 export { LogOut } from "./LogOut";
-export { AddressCard } from "./AddressCard";
+export { AddressBar } from "./AddressBar";
 export { ModalWindow } from "./ModalWindow";
 export { ProductListItem } from "./ProductListItem";
 export { AddToCartButton } from "./AddToCartButton";
+export { PromotionalCard } from "./PromotionalCard";
+export { Hero } from "./Hero";

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 import { LogOut } from "../LogOut";
 import { EditAccountForm } from "../../containers";
-import { SetAddress } from "../AddressCard/SetAddress";
+import { SetAddress } from "../AddressBar/SetAddress";
 
 export const ModalWindow = () => {
   const dispatch = useDispatch();

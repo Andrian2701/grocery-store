@@ -28,7 +28,7 @@ export const ExclusiveOffers = () => {
         <Typography
           variant="subtitle1"
           component={Link}
-          to={`/${category}/stock/all`}
+          to={`/${category}/all`}
           sx={{ color: theme.palette.primary.main, cursor: "pointer" }}
         >
           See all

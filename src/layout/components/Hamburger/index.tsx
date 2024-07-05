@@ -3,7 +3,7 @@ import { Navbar } from "..";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { AddressCard } from "../../../components";
+import { AddressBar } from "../../../components";
 import { navItems } from "../navItems";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
 import { useGetAddress } from "../../../hooks/useGetAddress";
@@ -67,7 +67,7 @@ export const Hamburger = () => {
             padding={{ xs: "0 16px 16px 16px", sm: "0 24px 16px 24px" }}
             gap={4}
           >
-            <AddressCard address={address} />
+            <AddressBar address={address} />
             <Navbar navItems={navItems} />
           </Box>
         </Box>

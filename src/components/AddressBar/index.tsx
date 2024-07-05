@@ -4,12 +4,12 @@ import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { IoPencilSharp } from "react-icons/io5";
 import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 
-type AddressCardProps = {
+type AddressBarProps = {
   address: string;
   title?: string;
 };
 
-export const AddressCard = ({ address, title }: AddressCardProps) => {
+export const AddressBar = ({ address, title }: AddressBarProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 

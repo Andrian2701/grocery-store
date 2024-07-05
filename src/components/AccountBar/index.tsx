@@ -4,11 +4,11 @@ import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 import { CurrentUser } from "../../hooks/useGetCurrentUser";
 import avatar from "../../assets/avatar.jpeg";
 
-type AccountCardProps = {
+type AccountBarProps = {
   currentUser: CurrentUser;
 };
 
-export const AccountCard = ({ currentUser }: AccountCardProps) => {
+export const AccountBar = ({ currentUser }: AccountBarProps) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 

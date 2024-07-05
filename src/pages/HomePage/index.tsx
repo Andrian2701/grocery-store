@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Backdrop, Box } from "@mui/material";
+import { Backdrop, Box, Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import { Categories } from "../../components";
+import { Categories, Hero, PromotionalCard } from "../../components";
 import { SearchItems } from "../../containers";
-import bannerImg from "../../assets/banner.jpeg";
+import { cards } from "../../components/PromotionalCard/cards";
 
 export const HomePage = () => {
   const [openBackdrop, setOpenBackdrop] = useState<boolean>(false);
@@ -39,19 +39,17 @@ export const HomePage = () => {
             openBackdrop={openBackdrop}
             setOpenBackDrop={setOpenBackdrop}
           />
-          <Box width="100%" height={{ xs: "10rem", sm: "15rem", md: "20rem" }}>
-            <Box
-              component="img"
-              src={bannerImg}
-              alt="Fresh & Healthy Vegetables"
-              width="100%"
-              height="100%"
-              borderRadius="0.5rem"
-            />
-          </Box>
+          <Hero />
         </Box>
         <Categories title="Top Categories" />
         <Outlet />
+        <Box sx={{ flexGrow: 2 }}>
+          <Grid container spacing={2}>
+            {cards.map((card) => (
+              <PromotionalCard key={card.title} card={card} />
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </>
   );
