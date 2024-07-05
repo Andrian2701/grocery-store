@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import { IoPencilSharp } from "react-icons/io5";
 import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
+import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 type AddressBarProps = {
   address: string;
@@ -12,6 +14,12 @@ type AddressBarProps = {
 export const AddressBar = ({ address, title }: AddressBarProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const currentUser = useGetCurrentUser();
+  const navigate = useNavigate();
+
+  const handleOnIconClick = () => {
+    currentUser ? dispatch(openModal("SetAddress")) : navigate("/login");
+  };
 
   return (
     <>
@@ -44,7 +52,7 @@ export const AddressBar = ({ address, title }: AddressBarProps) => {
             justifyContent="space-between"
             alignItems="center"
             sx={{ cursor: "pointer" }}
-            onClick={() => dispatch(openModal("SetAddress"))}
+            onClick={handleOnIconClick}
           >
             <Box display="flex" alignItems="center" gap={0.5}>
               <FmdGoodRoundedIcon sx={{ color: theme.palette.primary.main }} />

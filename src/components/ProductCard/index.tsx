@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Box, Skeleton, Typography, useTheme } from "@mui/material";
+import { AddToCartButton } from "../../components";
 import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 import { Product } from "./types";
-import { AddToCartButton } from "../../components";
 
 type ProductCardProps = {
   product?: Product;

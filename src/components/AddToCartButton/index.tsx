@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useAddToCart } from "../../hooks/useAddToCart";
+import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 type AddToCartButtonProps = {
   title?: string;
@@ -15,11 +17,20 @@ export const AddToCartButton = ({
   selectedQ,
   totalPrice,
 }: AddToCartButtonProps) => {
+  const currentUser = useGetCurrentUser();
   const { handleAddToCart } = useAddToCart({
     selectedProduct,
     selectedQ,
     totalPrice,
   });
+  const navigate = useNavigate();
+
+  const handleOnAddToCartClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    currentUser ? handleAddToCart() : navigate("/login");
+  };
 
   return (
     <Button
@@ -33,11 +44,7 @@ export const AddToCartButton = ({
               borderRadius: "0.3rem",
             }
       }
-      onClick={(e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleAddToCart();
-      }}
+      onClick={handleOnAddToCartClick}
     >
       {title ? title : <AddIcon sx={{ fontSize: "1.2rem" }} />}
     </Button>
