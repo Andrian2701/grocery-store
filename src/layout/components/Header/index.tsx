@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { AppBar, Box, Toolbar } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Navbar, Hamburger, AccountMenu, Cart } from "..";
 import { navItems } from "../navItems";
 import Logo from "../../../assets/logo.png";
+import { theme } from "../../../theme";
 
 export const Header = () => {
   return (
@@ -71,7 +73,11 @@ export const Header = () => {
           >
             <Navbar navItems={navItems.slice(4)} fontSize={13.5} />
           </Box>
-          <Cart />
+          <Cart
+            icon={
+              <ShoppingCartIcon sx={{ color: theme.palette.primary.main }} />
+            }
+          />
           <AccountMenu />
         </Box>
       </Toolbar>

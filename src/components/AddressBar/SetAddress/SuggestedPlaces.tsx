@@ -14,7 +14,7 @@ type SuggestedPlacesProps = {
   data: Data[];
   isLoading: boolean;
   setSearchQ: React.Dispatch<React.SetStateAction<string>>;
-  handleCloseModal: () => void;
+  handleCloseModal?: () => void;
 };
 
 export const SuggestedPlaces = ({
@@ -33,7 +33,7 @@ export const SuggestedPlaces = ({
     }
 
     setSearchQ("");
-    handleCloseModal();
+    handleCloseModal && handleCloseModal();
 
     dispatch(
       setNotification({

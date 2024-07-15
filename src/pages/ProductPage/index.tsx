@@ -5,6 +5,7 @@ import { QuantitySelector } from "../../containers";
 import { AddToCartButton, Categories, PageLoader } from "../../components";
 import { Product } from "../../components/ProductCard/types";
 import { useGetProductsQuery } from "../../store/features/Products/ProductsSlice";
+import { PageWrapper } from "../../styled-components";
 
 export const ProductPage = () => {
   const [selectedQ, setSelectedQ] = useState<number>();
@@ -21,18 +22,11 @@ export const ProductPage = () => {
 
   return (
     <>
-      {!isLoading ? (
+      {!isLoading && selectedProduct ? (
         <>
-          <Box
-            display="flex"
+          <PageWrapper
             flexDirection={{ xs: "column", sm: "column", md: "row" }}
             justifyContent="space-between"
-            marginTop={10}
-            padding={{
-              xs: "0 16px 48px 16px",
-              sm: "0 24px 48px 24px",
-              md: "0 48px 48px 48px",
-            }}
           >
             <Box
               width={{ xs: "100%", sm: "100%", md: "50%" }}
@@ -105,7 +99,7 @@ export const ProductPage = () => {
                 totalPrice={totalPrice}
               />
             </Box>
-          </Box>
+          </PageWrapper>
         </>
       ) : (
         <PageLoader />

@@ -3,6 +3,7 @@ import {
   AccountPage,
   AllProductsPage,
   AuthPage,
+  CheckoutPage,
   HomePage,
   LoginPage,
   NotFoundPage,
@@ -24,6 +25,7 @@ export const Router = () => (
         <Route path=":category/all" element={<AllProductsPage />} />
         <Route path=":category/:name" element={<ProductPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Route>
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/login" element={<LoginPage />} />

@@ -1,6 +1,10 @@
 import { Box, CircularProgress } from "@mui/material";
 
-export const PageLoader = () => {
+type PageLoaderProps = {
+  darkOverlay?: boolean;
+};
+
+export const PageLoader = ({ darkOverlay }: PageLoaderProps) => {
   return (
     <Box
       position="fixed"
@@ -11,8 +15,8 @@ export const PageLoader = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bgcolor="#ffffff"
       zIndex={1000}
+      bgcolor={darkOverlay ? "rgba(0, 0, 0, 0.5)" : "#ffffff"}
       p={{
         xs: "0 16px 48px 16px",
         sm: "0 24px 48px 24px",

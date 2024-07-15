@@ -5,7 +5,6 @@ export const theme = createTheme({
     primary: {
       main: "#33b864",
       light: "rgba(46, 171, 92, 0.1)",
-      dark: "",
     },
     secondary: {
       main: "#050505",
@@ -182,6 +181,27 @@ export const theme = createTheme({
             },
           },
         },
+      },
+    },
+    MuiDatePicker: {
+      defaultProps: {
+        slotProps: {
+          openPickerButton: {
+            background: "blue",
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        },
+      },
+      defaultProps: {
+        disableTouchRipple: true,
       },
     },
   },

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
+import { Link } from "react-router-dom";
 import { Box, Button, Drawer, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { ProductListItem } from "../../../components";
@@ -8,7 +9,11 @@ import { CartItems, useGetCartItems } from "../../../hooks/useGetCartItems";
 import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
 import emptyCartImg from "../../../assets/empty-cart.png";
 
-export const Cart = () => {
+type CartProps = {
+  icon?: ReactElement;
+};
+
+export const Cart = ({ icon }: CartProps) => {
   const [cart, setCart] = useState({
     right: false,
   });
@@ -20,6 +25,7 @@ export const Cart = () => {
   return (
     <>
       <CartWidget
+        icon={icon}
         cartItemsCount={cartItems?.length}
         toggleDrawer={toggleDrawer(!cart.right)}
       />
@@ -107,7 +113,13 @@ export const Cart = () => {
               padding={{ xs: "0 16px", sm: "0 24px" }}
             >
               <CartTotal cartItems={cartItems} />
-              <Button>To Checkout</Button>
+              <Button
+                component={Link}
+                to="/checkout"
+                onClick={toggleDrawer(!cart.right)}
+              >
+                To Checkout
+              </Button>
             </Box>
           )}
         </Box>
