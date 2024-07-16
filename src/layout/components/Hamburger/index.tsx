@@ -3,11 +3,11 @@ import { Navbar } from "..";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { Box, Drawer, IconButton, Typography, useTheme } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { AddressBar } from "../../../components";
 import { navItems } from "../navItems";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
 import { useGetAddress } from "../../../hooks/useGetAddress";
 import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
+import { AddressBar } from "../../../common";
 
 export const Hamburger = () => {
   const theme = useTheme();
@@ -67,7 +67,7 @@ export const Hamburger = () => {
             padding={{ xs: "0 16px 16px 16px", sm: "0 24px 16px 24px" }}
             gap={4}
           >
-            <AddressBar address={address} />
+            <AddressBar currentUser={currentUser} address={address} />
             <Navbar navItems={navItems} />
           </Box>
         </Box>

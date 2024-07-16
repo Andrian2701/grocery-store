@@ -1,8 +1,8 @@
 import { Box, OutlinedInput, Typography } from "@mui/material";
-import { PageLoader } from "../../../../components";
 import { InputMask, PaymentMethodCard } from "./components";
 import { CartItems, CurrentUser } from "../../../../types";
 import { useCheckoutForm } from "../../../../hooks/useCheckoutForm";
+import { PageLoading } from "../../../../common";
 
 type CheckoutFormProps = {
   currentUser: CurrentUser;
@@ -166,7 +166,7 @@ export const CheckoutForm = ({
           </Box>
         </form>
       </Box>
-      {loadSpinner && <PageLoader darkOverlay={true} />}
+      {loadSpinner && <PageLoading darkOverlay={true} />}
     </>
   );
 };

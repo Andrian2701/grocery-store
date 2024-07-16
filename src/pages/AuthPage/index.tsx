@@ -7,9 +7,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { GoogleSignIn } from "../../containers";
 import deliveryBoy from "../../assets/delivery-boy.png";
 import facebookIcon from "../../assets/icons/facebook-icon.png";
+import { GoogleSignIn } from "./GoogleSignIn";
 
 export const AuthPage = () => {
   const theme = useTheme();

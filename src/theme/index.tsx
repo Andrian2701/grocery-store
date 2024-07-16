@@ -64,6 +64,7 @@ export const theme = createTheme({
           margin: 0,
           boxSizing: "border-box",
           backgroundColor: "#f9fafb",
+          height: "100vh",
         },
       },
     },
@@ -179,15 +180,6 @@ export const theme = createTheme({
               color: "#808588",
               fontSize: 12.5,
             },
-          },
-        },
-      },
-    },
-    MuiDatePicker: {
-      defaultProps: {
-        slotProps: {
-          openPickerButton: {
-            background: "blue",
           },
         },
       },

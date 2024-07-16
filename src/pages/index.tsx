@@ -5,5 +5,4 @@ export { RegisterPage } from "./RegisterPage";
 export { AllProductsPage } from "./AllProductsPage";
 export { ProductPage } from "./ProductPage";
 export { AccountPage } from "./AccountPage";
-export { NotFoundPage } from "./NotFoundPage";
 export { CheckoutPage } from "./CheckoutPage";

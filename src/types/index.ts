@@ -13,3 +13,21 @@ export type CartItems = {
 };
 
 export type CurrentUser = User | null;
+
+export type Product = {
+  name: string;
+  about: string;
+  category: string;
+  imgURL: string;
+  quantity: number;
+  price: number;
+  calories: number;
+  productId: number;
+  units: string;
+};
+
+export type FormData = {
+  name?: string;
+  email: string;
+  password: string;
+};

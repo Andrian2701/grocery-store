@@ -1,4 +1,4 @@
-import { RegisterForm } from "../../containers";
+import { RegisterForm } from "./RegisterForm";
 
 export const RegisterPage = () => {
   return (

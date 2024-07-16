@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { Box } from "@mui/material";
-import { PageLoader } from "../../components";
 import { CheckoutButton, CheckoutForm, CheckoutSummary } from "./components";
+import { PageLoading } from "../../common";
 import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
-import { PageWrapper } from "../../styled-components";
+import { PageWrapper } from "../PageWrapper";
 import { useGetCartItems } from "../../hooks/useGetCartItems";
 import { useCountCartTotal } from "../../hooks/useCountCartTotal";
 
@@ -14,7 +14,7 @@ export const CheckoutPage = () => {
   const total = useCountCartTotal(cartItems);
 
   if (!currentUser || !cartItems) {
-    return <PageLoader />;
+    return <PageLoading />;
   }
 
   return (

@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Drawer, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { ProductListItem } from "../../../components";
+import { ProductListItem } from "../../../common";
 import { CartWidget, CartTotal } from "./components";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
 import { CartItems, useGetCartItems } from "../../../hooks/useGetCartItems";
