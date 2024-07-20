@@ -61,6 +61,7 @@ export const useAddToCart = ({
           category: selectedProduct.category,
           selectedQuantity: selectedQ,
           totalPrice: totalPrice,
+          packagingType: selectedProduct.packagingType,
         });
       }
 

@@ -196,5 +196,10 @@ export const theme = createTheme({
         disableTouchRipple: true,
       },
     },
+    MuiListItemButton: {
+      defaultProps: {
+        disableTouchRipple: true,
+      },
+    },
   },
 });

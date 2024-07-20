@@ -10,6 +10,7 @@ export type CartItems = {
   selectedQuantity: number;
   totalPrice: number;
   units: string;
+  packagingType: string;
 };
 
 export type CurrentUser = User | null;
@@ -24,10 +25,17 @@ export type Product = {
   calories: number;
   productId: number;
   units: string;
+  packagingType: string;
 };
 
 export type FormData = {
   name?: string;
   email: string;
   password: string;
+};
+
+export type FiltersState = {
+  calories: number;
+  packagingType: string[];
+  priceRange: [number, number];
 };

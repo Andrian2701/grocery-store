@@ -40,6 +40,7 @@ export const ProductListItem = ({
           name: data.name,
           productId: data.productId,
           quantity: data.quantity,
+          packagingType: data.packagingType,
           selectedQuantity: (data as CartItems).selectedQuantity,
           totalPrice: (data as CartItems).totalPrice,
           units: data.units,
