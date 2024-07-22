@@ -1,21 +1,7 @@
 import { useState, useEffect } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../utils/firebase";
-
-export type CartItems = {
-  reduce(
-    arg0: (total: number, item: CartItems) => number,
-    arg1: number
-  ): number;
-  category: string;
-  imgURL: string;
-  name: string;
-  productId: number;
-  quantity: number;
-  selectedQuantity: number;
-  totalPrice: number;
-  units: string;
-};
+import { CartItems } from "../types";
 
 export const useGetCartItems = (uid: string | undefined) => {
   const [cartItems, setCartItems] = useState<CartItems[]>([]);

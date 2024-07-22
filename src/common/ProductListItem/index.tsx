@@ -5,15 +5,18 @@ import { useFormatQuantity } from "../../hooks/useFormatQuantity";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { AddToCartButton } from "../AddToCartButton";
 import { db } from "../../utils/firebase";
-import { CartItems } from "../../hooks/useGetCartItems";
-import { Product } from "../../types";
+import { CartItems, Product } from "../../types";
 
 type ProductListItemProps = {
-  data: any;
+  data: Product | CartItems;
   isCartItem?: boolean;
   setCart?: any;
   uid?: string;
 };
+
+function isProduct(data: Product | CartItems): data is Product {
+  return (data as Product).price !== undefined;
+}
 
 export const ProductListItem = ({
   data,
@@ -28,8 +31,6 @@ export const ProductListItem = ({
       : (data as Product).quantity,
     data.units
   );
-
-  console.log(data);
 
   const handleRemoveCartItem = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -106,7 +107,9 @@ export const ProductListItem = ({
         gap="2rem"
       >
         <Typography variant="h4">
-          ${(data as Product).price || (data as CartItems).totalPrice}
+          {isProduct(data)
+            ? `$${data.price}`
+            : `$${(data as CartItems).totalPrice}`}
         </Typography>
         {isCartItem ? (
           <IconButton onClick={handleRemoveCartItem}>
@@ -116,7 +119,7 @@ export const ProductListItem = ({
           <AddToCartButton
             selectedProduct={data}
             selectedQ={data.quantity}
-            totalPrice={data.price}
+            totalPrice={isProduct(data) ? data.price : undefined}
           />
         )}
       </Box>
