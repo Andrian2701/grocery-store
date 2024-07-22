@@ -11,6 +11,9 @@ export const AllProductsPage = () => {
   const filteredProducts = useFilterProducts(products?.data);
   const matches = useMediaQuery("(max-width:864px)");
 
+  console.log(filteredProducts);
+  console.log(products);
+
   return (
     <PageWrapper flexDirection="column" gap="1rem">
       <Box display="flex" alignItems="center" gap="8px">
@@ -24,7 +27,9 @@ export const AllProductsPage = () => {
       <Box display="flex" gap="2rem">
         {!matches && <Filters matches={matches} products={products?.data} />}
         <Products
-          products={filteredProducts ? filteredProducts : products?.data}
+          products={
+            filteredProducts !== null ? filteredProducts : products?.data
+          }
           isLoading={isLoading}
         />
       </Box>

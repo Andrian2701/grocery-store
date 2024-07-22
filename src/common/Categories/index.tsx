@@ -35,6 +35,7 @@ export const Categories = ({ title }: CategoriesProps) => {
                   ? `/${item.query}`
                   : `/${item.query}/all`
               }
+              state={{ preventScrollToTop: true }}
               width={{ xs: "5rem", sm: "6rem", md: "7rem" }}
               height={{ xs: "5rem", sm: "6rem", md: "7rem" }}
               border={

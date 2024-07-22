@@ -23,6 +23,7 @@ export const GoogleSignIn = () => {
       try {
         const res = await getRedirectResult(auth);
         const user = res?.user;
+        console.log(user);
         if (!user) return;
 
         if (!auth.currentUser) {

@@ -21,6 +21,20 @@ export const PriceFilter = ({ products }: PriceFilterProps) => {
   );
   usePriceRange(products);
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    itemIndex: number
+  ) => {
+    const value = e.target.value.replace(/[^0-9]/g, "");
+    const newValue = Number(value);
+
+    if (itemIndex === 0) {
+      dispatch(setPriceRange([newValue, priceRange[1]]));
+    } else {
+      dispatch(setPriceRange([priceRange[0], newValue]));
+    }
+  };
+
   return (
     <Box display="flex" flexDirection="column" gap="1rem">
       <Box display="flex" gap="1.5rem">
@@ -31,7 +45,7 @@ export const PriceFilter = ({ products }: PriceFilterProps) => {
           <OutlinedInput
             value={priceRange[0]}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              dispatch(setPriceRange([Number(e.target.value), priceRange[1]]))
+              handleInputChange(e, 0)
             }
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
@@ -43,7 +57,7 @@ export const PriceFilter = ({ products }: PriceFilterProps) => {
           <OutlinedInput
             value={priceRange[1]}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              dispatch(setPriceRange([priceRange[0], Number(e.target.value)]))
+              handleInputChange(e, 1)
             }
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
