@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Typography } from "@mui/material";
-import { CartItems } from "../../../../../hooks/useGetCartItems";
+import { CartItems } from "../../../../../types";
 
 type CartTotalProps = {
   cartItems: CartItems[];
