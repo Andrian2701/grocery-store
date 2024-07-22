@@ -17,7 +17,7 @@ export const ExclusiveOffers = () => {
 
   const productsToShow = useMemo(
     () =>
-      products?.data.filter((product: Product[], index: number) => index < 7),
+      products?.data.filter((_product: Product[], index: number) => index < 7),
 
     [products]
   );

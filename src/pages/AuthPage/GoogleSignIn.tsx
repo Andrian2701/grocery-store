@@ -23,26 +23,25 @@ export const GoogleSignIn = () => {
       try {
         const res = await getRedirectResult(auth);
         const user = res?.user;
-        console.log(user);
         if (!user) return;
 
-        if (!auth.currentUser) {
+        if (auth.currentUser) {
           await updateProfile(auth.currentUser, {
             displayName: user.displayName,
             photoURL: user.photoURL,
           });
-        }
 
-        dispatch(
-          setNotification({
-            open: true,
-            title: "Successful authentication",
-            color: theme.palette.primary.main,
-          })
-        );
-        setTimeout(() => {
-          navigate("/vegetables");
-        }, 2000);
+          dispatch(
+            setNotification({
+              open: true,
+              title: "Successful authentication",
+              color: theme.palette.primary.main,
+            })
+          );
+          setTimeout(() => {
+            navigate("/vegetables");
+          }, 2000);
+        }
       } catch (error: any) {
         dispatch(
           setNotification({

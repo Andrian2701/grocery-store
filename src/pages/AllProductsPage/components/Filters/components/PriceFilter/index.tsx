@@ -66,7 +66,7 @@ export const PriceFilter = ({ products }: PriceFilterProps) => {
       <Slider
         getAriaLabel={() => "Price range"}
         value={priceRange}
-        onChange={(e: Event, newValue: number | number[]) =>
+        onChange={(_e: Event, newValue: number | number[]) =>
           dispatch(setPriceRange(newValue as [number, number]))
         }
         valueLabelDisplay="auto"

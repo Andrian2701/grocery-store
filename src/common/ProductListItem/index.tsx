@@ -9,7 +9,7 @@ import { CartItems } from "../../hooks/useGetCartItems";
 import { Product } from "../../types";
 
 type ProductListItemProps = {
-  data: Product | CartItems;
+  data: any;
   isCartItem?: boolean;
   setCart?: any;
   uid?: string;
@@ -28,6 +28,8 @@ export const ProductListItem = ({
       : (data as Product).quantity,
     data.units
   );
+
+  console.log(data);
 
   const handleRemoveCartItem = async (e: React.MouseEvent) => {
     e.preventDefault();
