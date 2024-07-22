@@ -5,9 +5,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { ProductListItem } from "../../../common";
 import { CartWidget, CartTotal } from "./components";
 import { useToggleDrawer } from "../../../hooks/useToggleDrawer";
-import { CartItems, useGetCartItems } from "../../../hooks/useGetCartItems";
+import { useGetCartItems } from "../../../hooks/useGetCartItems";
 import { useGetCurrentUser } from "../../../hooks/useGetCurrentUser";
 import emptyCartImg from "../../../assets/empty-cart.png";
+import { CartItems } from "../../../types";
 
 type CartProps = {
   icon?: ReactElement;
