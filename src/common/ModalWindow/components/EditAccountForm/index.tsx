@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { updateEmail, updateProfile } from "firebase/auth";
+import {
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updateEmail,
+  updateProfile,
+} from "firebase/auth";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
@@ -33,20 +38,44 @@ export const EditAccountForm = () => {
 
   const handleFormSubmit = async (formData: any) => {
     if (auth.currentUser) {
-      await updateProfile(auth.currentUser, {
-        displayName: formData.name,
-      });
-      await updateEmail(auth.currentUser, formData.email);
+      const email = auth.currentUser.email;
+      const password = prompt("Please enter your password to confirm");
 
-      dispatch(closeModal());
-      dispatch(
-        setNotification({
-          open: true,
-          title: `Successfull changes`,
-          color: theme.palette.primary.main,
-        })
-      );
-      setTimeout(() => dispatch(setNotification({ open: false })), 1500);
+      if (!email || !password) {
+        alert("Email or password missing!");
+        return;
+      }
+
+      const credential = EmailAuthProvider.credential(email, password);
+
+      try {
+        await reauthenticateWithCredential(auth.currentUser, credential);
+
+        await updateProfile(auth.currentUser, {
+          displayName: formData.name,
+        });
+        await updateEmail(auth.currentUser, formData.email);
+
+        dispatch(closeModal());
+        dispatch(
+          setNotification({
+            open: true,
+            title: `Successfull changes`,
+            color: theme.palette.primary.main,
+          })
+        );
+        setTimeout(() => dispatch(setNotification({ open: false })), 1500);
+      } catch (err: any) {
+        dispatch(closeModal());
+        dispatch(
+          setNotification({
+            open: true,
+            title: `${err.code}`,
+            color: "#d32f2f",
+          })
+        );
+        setTimeout(() => dispatch(setNotification({ open: false })), 1500);
+      }
     }
   };
 

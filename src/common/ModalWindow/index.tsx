@@ -1,7 +1,7 @@
 import { Modal } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { SetAddress } from "../AddressBar/SetAddress";
-import { LogOut, EditAccountForm } from "./components";
+import { LogOut, EditAccountForm, DeleteAccount } from "./components";
 import { closeModal } from "../../store/features/ModalWindow/ModalWindowSlice";
 
 export const ModalWindow = () => {
@@ -18,6 +18,8 @@ export const ModalWindow = () => {
         return <EditAccountForm />;
       case "SetAddress":
         return <SetAddress />;
+      case "DeleteAccount":
+        return <DeleteAccount />;
       default:
         return null;
     }

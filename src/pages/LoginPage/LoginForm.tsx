@@ -66,6 +66,7 @@ export const LoginForm = () => {
             color: "#d32f2f",
           })
         );
+        setTimeout(() => dispatch(setNotification({ open: false })), 1500);
       });
 
   const handleSendPasswordReset = (formData: FormData) => {

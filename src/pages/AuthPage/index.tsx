@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import deliveryBoy from "../../assets/delivery-boy.png";
 import facebookIcon from "../../assets/icons/facebook-icon.png";
-import { GoogleSignIn } from "./GoogleSignIn";
+import googleIcon from "../../assets/icons/google-icon.webp";
 
 export const AuthPage = () => {
   const theme = useTheme();
@@ -83,7 +83,15 @@ export const AuthPage = () => {
           </Divider>
         </Box>
         <Box display="flex" gap={1} m={2}>
-          <GoogleSignIn />
+          <Box
+            component="img"
+            src={googleIcon}
+            alt="Login with Google"
+            sx={{
+              height: 55,
+              cursor: "pointer",
+            }}
+          />
           <Box
             component="img"
             src={facebookIcon}

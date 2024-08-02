@@ -76,6 +76,7 @@ export const RegisterForm = () => {
           color: theme.palette.error.main,
         })
       );
+      setTimeout(() => dispatch(setNotification({ open: false })), 1500);
     }
   };
 

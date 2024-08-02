@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Box, MenuItem, Typography, useTheme } from "@mui/material";
-import { openModal } from "../../store/features/ModalWindow/ModalWindowSlice";
-import { CurrentUser } from "../../types";
-import avatar from "../../assets/avatar.jpeg";
+import { openModal } from "../../../../store/features/ModalWindow/ModalWindowSlice";
+import { CurrentUser } from "../../../../types";
+import avatar from "../../../../assets/avatar.jpeg";
 
 type AccountBarProps = {
   currentUser: CurrentUser;
