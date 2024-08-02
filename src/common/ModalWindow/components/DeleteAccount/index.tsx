@@ -46,7 +46,6 @@ export const DeleteAccount = () => {
         dispatch(closeModal());
         navigate("/login");
       });
-      navigate("/login");
     } catch (err: any) {
       dispatch(closeModal());
       dispatch(

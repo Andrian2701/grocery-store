@@ -24,7 +24,6 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
         to={!isLoading ? `/${product?.category}/${product?.name}` : "#"}
         sx={{
           textDecoration: "none",
-          height: "18rem",
           width: {
             xs: "13.5rem !important",
             md: "14rem !important",
