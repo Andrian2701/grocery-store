@@ -1,7 +1,7 @@
 .container-two .swiper-wrapper {
   display: flex;
   justify-content: flex-start;
-  height: 18.2rem;
+  height: 18rem;
 }
 
 .container-two .swiper-slide {

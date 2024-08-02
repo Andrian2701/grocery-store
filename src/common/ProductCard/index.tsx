@@ -32,8 +32,7 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
       >
         <Box
           sx={{
-            height: "100%",
-            padding: "1rem 1rem 1rem 1rem",
+            height: "288px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -41,6 +40,8 @@ export const ProductCard = ({ product, isLoading }: ProductCardProps) => {
             borderRadius: "1rem",
             bgcolor: "#ffffff",
             cursor: "pointer",
+            boxSizing: "border-box",
+            padding: "1rem 1rem 1rem 1rem",
           }}
         >
           {!isLoading ? (

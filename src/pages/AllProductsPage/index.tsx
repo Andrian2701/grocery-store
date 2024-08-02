@@ -11,9 +11,6 @@ export const AllProductsPage = () => {
   const filteredProducts = useFilterProducts(products?.data);
   const matches = useMediaQuery("(max-width:864px)");
 
-  console.log(filteredProducts);
-  console.log(products);
-
   return (
     <PageWrapper flexDirection="column" gap="1rem">
       <Box display="flex" alignItems="center" gap="8px">
